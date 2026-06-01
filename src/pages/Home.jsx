@@ -33,8 +33,8 @@ export default function Home({ navigate }) {
             <IconClover size={44} color="var(--color-terra)" />
           </div>
           <img
-            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=900&q=80&fit=crop"
-            alt="Mains tenant délicatement les pieds d'un bébé"
+            src={heroImg}
+            alt="Pieds d'un nouveau-né dépassant d'une serviette"
           />
         </div>
 
