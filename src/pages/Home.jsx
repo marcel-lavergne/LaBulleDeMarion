@@ -4,7 +4,7 @@
 
 import Button from "../components/ui/Button.jsx";
 import styles from "./Home.module.css";
-
+import { IconDrops, IconFeet, IconFlower, IconClover } from "../components/ui/BrandIcons.jsx";
 import heroImg     from "../assets/hero-accueil.jpg";
 import bandImg     from "../assets/band-prenatal.jpg";
 import feuillage   from "../assets/feuillage-large.jpg";
@@ -22,12 +22,23 @@ export default function Home({ navigate }) {
   return (
     <div>
 
-      {/* ── Hero ── */}
+  {/* ── Hero ── */}
       <section className={styles.hero}>
+        <div className={styles.heroImage}>
+          {/* Formes décoratives terracotta */}
+          <div className={styles.blobTop}>
+            <IconClover size={56} color="var(--color-terra)" />
+          </div>
+          <div className={styles.blobBottom}>
+            <IconClover size={44} color="var(--color-terra)" />
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=900&q=80&fit=crop"
+            alt="Mains tenant délicatement les pieds d'un bébé"
+          />
+        </div>
+
         <div className={styles.heroText}>
-          <p className={`${styles.eyebrow} reveal reveal--1 label-section`}>
-            Marion Lefort · Infirmière reconvertie
-          </p>
           <h1 className={`${styles.heroTitle} reveal reveal--2 title-display`}>
             Un <span className={styles.heroAccent}>accompagnement</span>
             <br />tout en douceur
@@ -35,16 +46,17 @@ export default function Home({ navigate }) {
           <p className={`${styles.heroSubtitle} reveal reveal--3 body-light`}>
             J'accompagne les femmes et les jeunes parents avec douceur et bienveillance
             à travers des soins autour de la grossesse et des premiers mois de vie de bébé.
+            Chaque accompagnement est pensé comme un moment de pause, de réconfort et de
+            connexion, dans un cadre rassurant et apaisant.
+          </p>
+          <p className={`${styles.heroSubtitle} reveal reveal--3 body-light`}>
+            Mon approche s'appuie sur l'écoute, la présence et le respect du rythme de
+            chacun, afin de créer un espace où parents et bébés peuvent se détendre, se
+            retrouver et se sentir en confiance.
           </p>
           <div className={`${styles.heroActions} reveal reveal--4`}>
-            <Button variant="fill"    onClick={() => navigate("soins")}>Découvrir les soins</Button>
-            <Button variant="outline" onClick={() => navigate("contact")}>Prendre contact</Button>
+            <Button variant="fill" onClick={() => navigate("soins")}>Découvrez mes soins</Button>
           </div>
-        </div>
-
-        <div className={styles.heroImage}>
-          <img src={heroImg} alt="Maman tenant son nouveau-né contre elle" />
-          <div className={styles.heroBadge}>À domicile · Région parisienne</div>
         </div>
       </section>
 
