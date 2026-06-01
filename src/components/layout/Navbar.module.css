@@ -1,0 +1,88 @@
+/* Navbar.module.css */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: var(--navbar-height);
+  padding: 0 4vw;
+
+  background-color: var(--color-lin);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 12%, transparent);
+
+  transition:
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
+}
+
+/* Effet verre dépoli au scroll */
+.navbar--scrolled {
+  background-color: rgba(250, 243, 233, 0.92);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(129, 58, 40, 0.08);
+  border-bottom-color: color-mix(in srgb, var(--color-terra) 22%, transparent);
+}
+
+/* ── Logo ── */
+.logo {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── Liste de liens ── */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  list-style: none;
+}
+
+/* ── Lien individuel ── */
+.link {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0 0 3px;
+
+  font-family: var(--font-body);
+  font-size: 0.73rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+/* Soulignement animé */
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-terra);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link:hover {
+  color: var(--color-terra);
+}
+
+.link:hover::after,
+.link--active::after {
+  width: 100%;
+}
+
+.link--active {
+  color: var(--color-terra);
+}

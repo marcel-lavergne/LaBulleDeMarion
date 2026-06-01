@@ -1,0 +1,49 @@
+/* Footer.module.css */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+
+  background-color: var(--color-rouge);
+  padding: 2.8rem 6vw;
+}
+
+.logo {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.copyright {
+  font-size: 0.70rem;
+  color: rgba(250, 243, 233, 0.45);
+  font-weight: 300;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  list-style: none;
+}
+
+.link {
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.70rem;
+  letter-spacing: 0.06em;
+  color: rgba(250, 243, 233, 0.50);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  padding: 0;
+}
+
+.link:hover {
+  color: var(--color-lin);
+}

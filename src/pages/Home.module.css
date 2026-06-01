@@ -1,0 +1,206 @@
+/* Home.module.css */
+
+/* ── Hero ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 4rem 5rem 6vw;
+  gap: 0;
+}
+
+.eyebrow {
+  margin-bottom: 1.5rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.6rem, 4.2vw, 4.4rem);
+  margin-bottom: 1.5rem;
+}
+
+.heroAccent {
+  color: var(--color-terra);
+}
+
+.heroSubtitle {
+  max-width: 420px;
+  margin-bottom: 2.6rem;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.heroImage {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-cream);
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroBadge {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  background: var(--color-terra);
+  color: var(--color-lin);
+  padding: 0.85rem 1.8rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Citation ── */
+.citation {
+  position: relative;
+  padding: 4.5rem 8vw;
+  text-align: center;
+  border-top: 1px solid color-mix(in srgb, var(--color-terra) 12%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 12%, transparent);
+  background-color: var(--color-lin);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Voile clair pour garder le texte lisible par-dessus le feuillage */
+.citation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(250, 243, 233, 0.78);
+}
+
+.citationText {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+  line-height: 1.5;
+  color: var(--color-text);
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.citationAccent {
+  color: var(--color-terra);
+}
+
+/* ── Soins en vedette ── */
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.featuredCard {
+  position: relative;
+  display: block;
+  border: none;
+  cursor: pointer;
+  min-height: 320px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.featuredImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.featuredCard:hover .featuredImg {
+  transform: scale(1.05);
+}
+
+.featuredOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(129, 58, 40, 0.78) 0%, rgba(129, 58, 40, 0.25) 45%, rgba(129, 58, 40, 0.05) 100%);
+}
+
+.featuredContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 2.2rem;
+  text-align: left;
+}
+
+.featuredName {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  color: var(--color-lin);
+  line-height: 1.1;
+}
+
+.featuredSub {
+  font-size: 0.70rem;
+  color: rgba(250, 243, 233, 0.8);
+  letter-spacing: 0.08em;
+  font-weight: 300;
+}
+
+.featuredCta {
+  font-size: 0.68rem;
+  color: rgba(250, 243, 233, 0.9);
+  letter-spacing: 0.1em;
+  margin-top: 0.6rem;
+}
+
+/* ── Bannière prénatal ── */
+.prenatalBand {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+}
+
+.prenatalBand img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.82);
+}
+
+.prenatalOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8vw;
+}
+
+.prenatalTitle {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  color: var(--color-lin);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero             { grid-template-columns: 1fr; }
+  .heroImage        { height: 60vw; order: -1; }
+  .heroText         { padding: 3rem 5vw; }
+  .featuredGrid     { grid-template-columns: 1fr; }
+  .prenatalOverlay  { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 3rem 5vw; }
+}

@@ -1,0 +1,95 @@
+/* Contact.module.css */
+
+.header {
+  background: var(--color-cream);
+  padding: 5rem 8vw 4rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+}
+
+/* ── Infos ── */
+.info {
+  padding: 4rem 3rem 4rem 8vw;
+  background: var(--color-lin);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-right: 1px solid color-mix(in srgb, var(--color-terra) 10%, transparent);
+}
+
+.infoBlock {
+  padding: 1.8rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 10%, transparent);
+}
+
+.infoBlock:first-child {
+  padding-top: 0;
+}
+
+.infoLabel {
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.infoValue {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  font-weight: 400;
+  transition: color var(--transition-fast);
+}
+
+a.infoValue:hover {
+  color: var(--color-terra);
+}
+
+.infoNote {
+  margin-top: 2rem;
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-rose) 40%, transparent);
+}
+
+.infoNote p {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ── Formulaire ── */
+.formCol {
+  padding: 4rem 8vw 4rem 3rem;
+  background: var(--color-cream);
+}
+
+.success {
+  background: var(--color-terra);
+  color: var(--color-lin);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .layout     { grid-template-columns: 1fr; }
+  .info       { padding: 3rem 5vw; border-right: none; }
+  .formCol    { padding: 3rem 5vw; }
+}
+
+/* ── Message d'erreur ── */
+.error {
+  background: color-mix(in srgb, var(--color-terra) 10%, transparent);
+  border-left: 2px solid var(--color-terra);
+  color: var(--color-rouge);
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.2rem;
+}
