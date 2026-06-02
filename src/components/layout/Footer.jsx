@@ -3,28 +3,36 @@
 ───────────────────────────────────────────── */
 
 import Logo   from "../ui/Logo.jsx";
+import { idToPath } from "../../config/routes.js";
 import styles from "./Footer.module.css";
 
 const FOOTER_LINKS = [
-  { id: "home",          label: "Accueil" },
-  { id: "apropos",       label: "À propos" },
-  { id: "soins",         label: "Les soins" },
+  { id: "home",           label: "Accueil" },
+  { id: "apropos",        label: "À propos" },
+  { id: "soins",          label: "Les soins" },
   { id: "accompagnement", label: "L'accompagnement" },
-  { id: "temoignages",   label: "Témoignages" },
-  { id: "contact",       label: "Contact" },
+  { id: "temoignages",    label: "Témoignages" },
+  { id: "contact",        label: "Contact" },
 ];
 
 export default function Footer({ navigate }) {
+  const handleNav = (e, id) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    navigate(id);
+  };
+
   return (
     <footer className={styles.footer}>
 
-      <button
+      <a
+        href={idToPath("home")}
         className={styles.logo}
-        onClick={() => navigate("home")}
+        onClick={(e) => handleNav(e, "home")}
         aria-label="Retour à l'accueil"
       >
         <Logo size="sm" light />
-      </button>
+      </a>
 
       <span className={styles.copyright}>
         © 2025 La Bulle de Marion · Tous droits réservés
@@ -33,9 +41,13 @@ export default function Footer({ navigate }) {
       <ul className={styles.links} role="list">
         {FOOTER_LINKS.map(({ id, label }) => (
           <li key={id}>
-            <button className={styles.link} onClick={() => navigate(id)}>
+            <a
+              href={idToPath(id)}
+              className={styles.link}
+              onClick={(e) => handleNav(e, id)}
+            >
               {label}
-            </button>
+            </a>
           </li>
         ))}
       </ul>

@@ -30,6 +30,8 @@
 
 /* ── Logo ── */
 .logo {
+  display: inline-flex;
+  align-items: center;
   background: none;
   border: none;
   padding: 0;
@@ -47,6 +49,7 @@
 
 /* ── Lien individuel ── */
 .link {
+  display: inline-block;
   position: relative;
   background: none;
   border: none;
@@ -85,4 +88,99 @@
 
 .link--active {
   color: var(--color-terra);
+}
+
+/* ─────────────────────────────────────────────
+   MENU MOBILE (burger + tiroir déroulant)
+───────────────────────────────────────────── */
+
+/* Conteneur du bouton contact (desktop) */
+.contactDesktop {
+  display: flex;
+  align-items: center;
+}
+
+/* Bouton burger — masqué en desktop */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 0 auto;
+  background-color: var(--color-terra);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Croix quand le menu est ouvert */
+.burger--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger--open span:nth-child(2) { opacity: 0; }
+.burger--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Tiroir — masqué en desktop */
+.drawer {
+  display: none;
+}
+
+/* ── Bascule mobile ── */
+@media (max-width: 768px) {
+  .links,
+  .contactDesktop {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-lin);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 14%, transparent);
+    box-shadow: 0 12px 24px rgba(129, 58, 40, 0.10);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .drawer--open {
+    max-height: 380px;
+  }
+
+  .drawerLink {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem 5vw;
+    background: none;
+    border: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 8%, transparent);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .drawerLink:hover,
+  .drawerLink--active {
+    color: var(--color-terra);
+    background-color: color-mix(in srgb, var(--color-cream) 50%, transparent);
+  }
 }

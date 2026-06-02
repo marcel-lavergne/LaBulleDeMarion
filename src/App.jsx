@@ -32,7 +32,7 @@ const PAGE_MAP = {
 
 export default function App() {
   const { currentPage, displayedPage, pagePhase, curtainClass, navigate } =
-    useNavigation("home");
+    useNavigation();
 
   /* Référence sur le conteneur scrollable */
   const scrollRef = useRef(null);
