@@ -20,7 +20,7 @@ export const SOINS = [
     icon: "flower",
     image: imgRebozo,
     name: "Rituel Rebozo",
-    duration: "3h30",
+    duration: "3h00",
     price: "200€",
     cible: "Femme",
     color: "terra",
@@ -42,7 +42,7 @@ export const SOINS = [
     image: imgPrenatal,
     name: "Massage femme enceinte",
     duration: "2h",
-    price: "80€",
+    price: "110€",
     cible: "Femme enceinte",
     color: "rose",
     description:
@@ -98,8 +98,8 @@ export const SOINS = [
     icon: "drops",
     image: imgBainEnv,
     name: "Bain enveloppé",
-    duration: "2h30",
-    price: "100€",
+    duration: "1h30",
+    price: "90€",
     cible: "Bébé",
     color: "rose",
     description:
@@ -119,8 +119,8 @@ export const SOINS = [
     icon: "flower",
     image: imgBainThera,
     name: "Bain thérapeutique",
-    duration: "2h30",
-    price: "115€",
+    duration: "1h30",
+    price: "100€",
     cible: "Bébé",
     color: "rouge",
     description:
@@ -193,4 +193,23 @@ export const SOINS = [
     ],
     contrindications: null,
   },
+  {
+  id: "massage-enfant",
+  icon: "feet",
+  image: imgEnfant,
+  name: "Massage enfant (6 à 14 ans)",
+  duration: "1h",
+  price: "55€",
+  cible: "Enfant",
+  color: "terra",
+  description:
+    "Comprend un temps d'échange et de préparation, puis un massage de 45 minutes : tout le corps ou seulement certaines parties, selon le choix de l'enfant. La présence d'un adulte est obligatoire durant tout le soin.",
+  apporte: [
+    "Relaxation et apaisement",
+    "Améliore le sommeil",
+    "Réduit le stress",
+    "Libère les tensions du quotidien",
+  ],
+  contrindications: null,
+},
 ];
