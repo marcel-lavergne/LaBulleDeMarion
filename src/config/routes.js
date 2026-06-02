@@ -45,7 +45,7 @@ export const ROUTES = [
   {
     id: "contact",
     path: "/contact",
-    title: "Contact — prendre rendez-vous | La Bulle de Marion",
+    title: "Contact — prendre contact | La Bulle de Marion",
     description:
       "Contactez Marion pour un soin à domicile en région parisienne : téléphone, email et formulaire de contact.",
   },

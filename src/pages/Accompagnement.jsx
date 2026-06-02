@@ -45,7 +45,7 @@ export default function Accompagnement({ navigate }) {
       </section>
 
       <div className={styles.cta}>
-        <Button variant="fill" onClick={() => navigate("contact")}>Prendre rendez-vous</Button>
+        <Button variant="fill" onClick={() => navigate("contact")}>Prendre contact</Button>
         <Button variant="outline" onClick={() => navigate("soins")}>Découvrir les soins</Button>
       </div>
     </div>

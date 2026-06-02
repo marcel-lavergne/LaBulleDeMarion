@@ -76,7 +76,7 @@ export default function Soins({ navigate }) {
             })}
           </div>
           <div className={styles.cta}>
-            <Button variant="fill" onClick={() => navigate("contact")}>Prendre rendez-vous</Button>
+            <Button variant="fill" onClick={() => navigate("contact")}>Prendre contact</Button>
           </div>
         </>
       )}

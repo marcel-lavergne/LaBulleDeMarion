@@ -25,7 +25,7 @@ export default function Temoignages({ navigate }) {
       </div>
 
       <div style={{ textAlign: "center", padding: "3.5rem", background: "var(--color-cream)" }}>
-        <Button variant="fill" onClick={() => navigate("contact")}>Prendre rendez-vous</Button>
+        <Button variant="fill" onClick={() => navigate("contact")}>Prendre contact</Button>
       </div>
     </div>
   );
