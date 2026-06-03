@@ -13,6 +13,7 @@ import imgBainThera    from "../assets/soin-bain-therapeutique.jpg";
 import imgMassageBebe  from "../assets/soin-massage-bebe.jpg";
 import imgAtelier      from "../assets/soin-atelier-bebe.jpg";
 import imgVentre       from "../assets/soin-maux-ventre.jpg";
+import imgEnfant from "../assets/soin-massage-enfant.jpg";
 
 export const SOINS = [
   {
