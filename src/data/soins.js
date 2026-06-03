@@ -198,10 +198,10 @@ export const SOINS = [
   id: "massage-enfant",
   icon: "feet",
   image: imgEnfant,
-  name: "Massage enfant (6 à 14 ans)",
+  name: "Massage enfant",
   duration: "1h",
   price: "55€",
-  cible: "Enfant",
+  cible: "6 à 14 ans",
   color: "terra",
   description:
     "Comprend un temps d'échange et de préparation, puis un massage de 45 minutes : tout le corps ou seulement certaines parties, selon le choix de l'enfant. La présence d'un adulte est obligatoire durant tout le soin.",

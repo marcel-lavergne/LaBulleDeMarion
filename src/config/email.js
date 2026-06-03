@@ -32,7 +32,7 @@ export const CONTACT_EMAIL = "lavergne.marcel@gmail.com";
    pour être visible côté navigateur), tu peux les laisser ici.
 ─────────────────────────────────────────────────────────────── */
 export const EMAILJS_SERVICE_ID  = "service_jf4652c";
-export const EMAILJS_TEMPLATE_ID = "template_sp4a7u8";
+export const EMAILJS_TEMPLATE_ID = "template_6uf0xhe";
 export const EMAILJS_PUBLIC_KEY  = "D130WqroRLBnYd3mB";
 
 
