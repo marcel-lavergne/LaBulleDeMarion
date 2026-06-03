@@ -13,7 +13,7 @@
        • Pendant les tests :  "lavergne.marcel@gmail.com"
        • Quand le site sera prêt, remplace par :  "contact@labulledemarion.fr"
 ─────────────────────────────────────────────────────────────── */
-export const CONTACT_EMAIL = "lavergne.marcel@gmail.com";
+export const CONTACT_EMAIL = "contact@labulledemarion.fr";
 
 
 /* ───────────────────────────────────────────────────────────────
