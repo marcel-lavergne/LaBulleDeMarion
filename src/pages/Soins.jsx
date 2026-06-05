@@ -60,6 +60,9 @@ export default function Soins({ navigate }) {
                       <span className={styles.cardPrice}>{soin.price}</span>
                     </div>
                     <p className={styles.cardMeta}>{soin.duration} · {soin.cible}</p>
+                    {soin.certif && (
+                      <span className={styles.certif}>✦ {soin.certif}</span>
+                    )}
                     <div className={styles.accordion} style={{ maxHeight: isOpen ? "500px" : "0" }}>
                       <p className={styles.desc}>{soin.description}</p>
                       <div className={styles.tags}>
@@ -94,6 +97,7 @@ export default function Soins({ navigate }) {
                   <span className={styles.packPrice}>{pack.price}</span>
                   <span className={styles.packOriginal}>au lieu de {pack.originalPrice}</span>
                 </div>
+                {pack.note && <p className={styles.packNote}>{pack.note}</p>}
               </div>
             ))}
           </div>

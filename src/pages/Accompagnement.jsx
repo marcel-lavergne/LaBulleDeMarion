@@ -35,7 +35,7 @@ export default function Accompagnement({ navigate }) {
         {[
           { titre: "Sur-mesure", texte: "Chaque accompagnement est pensé en fonction de votre histoire, de vos besoins et de ceux de votre enfant." },
           { titre: "À domicile", texte: "Je me déplace en région parisienne pour que vous puissiez recevoir le soin dans votre propre espace, en toute sérénité." },
-          { titre: "Bienveillance", texte: "Formée après 18 ans en soins intensifs pédiatriques, j'apporte une présence attentive et un geste professionnel." },
+          { titre: "Bienveillance", texte: "Formée après 18 ans en cardiologie pédiatriques, j'apporte une présence attentive et un geste professionnel." },
         ].map(({ titre, texte }) => (
           <div key={titre} className={styles.valueCard}>
             <h3 className={styles.valueTitle}>{titre}</h3>

@@ -34,7 +34,7 @@ export default function Home({ navigate }) {
           </div>
           <img
             src={heroImg}
-            alt="Pieds d'un nouveau-né dépassant d'une serviette"
+            alt="Une maman et son nouveau-né lovés ensemble, enveloppés de douceur"
           />
         </div>
 

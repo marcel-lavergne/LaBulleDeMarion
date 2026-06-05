@@ -48,3 +48,25 @@
   .tabs { padding: 0 4vw; overflow-x: auto; }
   .tab { padding: 1rem 1.2rem; white-space: nowrap; }
 }
+
+/* ── Badge "certifié" sur une carte soin ── */
+.certif {
+  display: inline-block;
+  margin-top: 0.55rem;
+  padding: 0.28rem 0.75rem;
+  background-color: color-mix(in srgb, var(--color-terra) 10%, transparent);
+  color: var(--color-terra);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  border-radius: 20px;
+}
+
+/* ── Mention "+10€" sous le prix d'un pack ── */
+.packNote {
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--color-rose);
+}
