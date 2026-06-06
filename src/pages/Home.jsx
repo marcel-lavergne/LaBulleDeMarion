@@ -64,8 +64,9 @@ export default function Home({ navigate }) {
       <div className={styles.citation} style={{ backgroundImage: `url(${feuillage})` }}>
         <p className={styles.citationText}>
           Après plusieurs années{" "}
-          <span className={styles.citationAccent}>auprès des familles</span>,
-          j'ai à cœur aujourd'hui d'offrir un accompagnement{" "}
+          <span className={styles.citationAccent}>auprès des familles</span> en tant qu'infirmière, 
+          <span className={styles.citationAccent}>{" "}j'ai à coeur{" "}</span>
+           aujourd'hui d'offrir un accompagnement{" "}
           <span className={styles.citationAccent}>plus doux</span> et{" "}
           <span className={styles.citationAccent}>plus attentif</span>.
         </p>
