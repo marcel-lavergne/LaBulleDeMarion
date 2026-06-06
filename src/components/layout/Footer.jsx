@@ -35,7 +35,7 @@ export default function Footer({ navigate }) {
       </a>
 
       <span className={styles.copyright}>
-        © 2025 La Bulle de Marion · Tous droits réservés
+        © 2026 La Bulle de Marion · Tous droits réservés
       </span>
 
       <ul className={styles.links} role="list">
