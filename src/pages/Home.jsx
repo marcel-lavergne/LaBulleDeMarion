@@ -5,17 +5,19 @@
 import Button from "../components/ui/Button.jsx";
 import styles from "./Home.module.css";
 import { IconDrops, IconFeet, IconFlower, IconClover } from "../components/ui/BrandIcons.jsx";
-import heroImg     from "../assets/hero-accueil.jpg";
-import bandImg     from "../assets/band-prenatal.jpg";
-import feuillage   from "../assets/feuillage-large.jpg";
-import imgBain     from "../assets/soin-bain-therapeutique.jpg";
-import imgMassage  from "../assets/featured-massage-bebe.jpg";
-import imgRebozo   from "../assets/featured-rebozo.jpg";
+import { SOINS } from "../data/soins.js";
+import heroImg   from "../assets/hero-accueil.jpg";
+import bandImg   from "../assets/band-prenatal.jpg";
+import feuillage from "../assets/feuillage-large.jpg";
 
+/* Soins mis en avant : reliés à un soin par son id.
+   L'image, le prix et la durée sont tous récupérés depuis data/soins.js
+   → les photos restent automatiquement identiques à la page Soins.
+   Au clic, on défile jusqu'au soin correspondant. */
 const FEATURED_SOINS = [
-  { img: imgBain,    label: "Bain thérapeutique", sub: "2h30 · 115€", page: "soins" },
-  { img: imgMassage, label: "Massage bébé",        sub: "1h · 55€",    page: "soins" },
-  { img: imgRebozo,  label: "Rituel Rebozo",       sub: "3h30 · 200€", page: "soins" },
+  { id: "bain-therapeutique",          label: "Bain thérapeutique" },
+  { id: "massage-bebe-accompagnement", label: "Massage bébé" },
+  { id: "rebozo",                      label: "Rituel Rebozo" },
 ];
 
 export default function Home({ navigate }) {
@@ -33,8 +35,8 @@ export default function Home({ navigate }) {
             <IconClover size={44} color="var(--color-terra)" />
           </div>
           <img
-            src={heroImg}
-            alt="Une maman et son nouveau-né lovés ensemble, enveloppés de douceur"
+            src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=900&q=80&fit=crop"
+            alt="Mains tenant délicatement les pieds d'un bébé"
           />
         </div>
 
@@ -63,8 +65,7 @@ export default function Home({ navigate }) {
       {/* ── Citation ── */}
       <div className={styles.citation} style={{ backgroundImage: `url(${feuillage})` }}>
         <p className={styles.citationText}>
-          Après plusieurs années{" "}
-          <span className={styles.citationAccent}>auprès des familles</span> en tant qu'infirmière, 
+          Après plusieurs années{" "} <span className={styles.citationAccent}>auprès des familles</span> en tant qu'infirmière, 
           <span className={styles.citationAccent}>{" "}j'ai à coeur{" "}</span>
            aujourd'hui d'offrir un accompagnement{" "}
           <span className={styles.citationAccent}>plus doux</span> et{" "}
@@ -74,21 +75,26 @@ export default function Home({ navigate }) {
 
       {/* ── Soins en vedette ── */}
       <div className={styles.featuredGrid}>
-        {FEATURED_SOINS.map((s, i) => (
-          <button
-            key={i}
-            className={`${styles.featuredCard} lift`}
-            onClick={() => navigate(s.page)}
-          >
-            <img className={styles.featuredImg} src={s.img} alt={s.label} loading="lazy" />
-            <div className={styles.featuredOverlay} />
-            <div className={styles.featuredContent}>
-              <p className={styles.featuredName}>{s.label}</p>
-              <p className={styles.featuredSub}>{s.sub}</p>
-              <span className={styles.featuredCta}>découvrir →</span>
-            </div>
-          </button>
-        ))}
+        {FEATURED_SOINS.map((f) => {
+          const soin = SOINS.find((s) => s.id === f.id);
+          if (!soin) return null;
+          const sub = `${soin.duration} · ${soin.price}`;
+          return (
+            <button
+              key={f.id}
+              className={`${styles.featuredCard} lift`}
+              onClick={() => navigate("soins", f.id)}
+            >
+              <img className={styles.featuredImg} src={soin.image} alt={f.label} loading="lazy" />
+              <div className={styles.featuredOverlay} />
+              <div className={styles.featuredContent}>
+                <p className={styles.featuredName}>{f.label}</p>
+                <p className={styles.featuredSub}>{sub}</p>
+                <span className={styles.featuredCta}>découvrir →</span>
+              </div>
+            </button>
+          );
+        })}
       </div>
 
       {/* ── Bannière massage prénatal ── */}

@@ -23,7 +23,7 @@ export default function Accompagnement({ navigate }) {
           Mon engagement reste inchangé : offrir un soin d'une grande qualité, dans l'écoute et la bienveillance, pour vous accompagner avec justesse dans ces moments précieux de vie.
         </p>
         <p className={styles.devise}>
-          <em>Prendre soin, avec exigence. Accueillir, avec délicatesse. Transmettre, avec cœur.</em>
+          <em>Prendre soin, avec exigence. Accueillir, avec délicatesse. Transmettre, avec coeur.</em>
         </p>
       </section>
 

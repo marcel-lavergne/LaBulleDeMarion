@@ -31,7 +31,7 @@ export default function Apropos({ navigate }) {
             <p key={i} className={`reveal reveal--${Math.min(i + 3, 5)} body-light`} style={{ marginBottom: "1rem", maxWidth: 460 }}>{p}</p>
           ))}
           <div className={styles.devises}>
-            {["Prendre soin, avec exigence.", "Accueillir, avec délicatesse.", "Transmettre, avec cœur."].map(d => (
+            {["Prendre soin, avec exigence.", "Accueillir, avec délicatesse.", "Transmettre, avec coeur."].map(d => (
               <p key={d} className={styles.devise}>{d}</p>
             ))}
           </div>

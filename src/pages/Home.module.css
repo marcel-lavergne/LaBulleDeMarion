@@ -108,6 +108,8 @@
 .featuredGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 8px;            /* ligne blanche séparatrice entre les photos (épaisseur ajustable) */
+  background: #fff;    /* couleur de la ligne — passe en var(--color-lin) pour un blanc plus doux */
 }
 
 .featuredCard {
@@ -204,10 +206,9 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .hero             { grid-template-columns: 1fr; min-height: auto; }
-  .heroImage        { height: 68vw; order: -1; margin: 0 5vw 1.5rem; }
-  .heroText         { padding: 2.5rem 5vw 3rem; }
+  .hero             { grid-template-columns: 1fr; }
+  .heroImage        { height: 60vw; order: -1; }
+  .heroText         { padding: 3rem 5vw; }
   .featuredGrid     { grid-template-columns: 1fr; }
-  .prenatalBand     { height: 240px; }
-  .prenatalOverlay  { flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.2rem; padding: 2.5rem 5vw; }
+  .prenatalOverlay  { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 3rem 5vw; }
 }

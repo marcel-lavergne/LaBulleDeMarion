@@ -20,6 +20,9 @@ import Contact        from "./pages/Contact.jsx";
 
 import "./styles/globals.css";
 
+/* Décalage pour l'ancrage = hauteur de la navbar (--navbar-height: 68px) + une marge */
+const ANCHOR_OFFSET = 68 + 16;
+
 /* Correspondance id → composant page */
 const PAGE_MAP = {
   home:           Home,
@@ -31,16 +34,34 @@ const PAGE_MAP = {
 };
 
 export default function App() {
-  const { currentPage, displayedPage, pagePhase, curtainClass, navigate } =
-    useNavigation();
+  const { currentPage, displayedPage, pagePhase, curtainClass, navigate, anchorRef } =
+    useNavigation("home");
 
   /* Référence sur le conteneur scrollable */
   const scrollRef = useRef(null);
   const scrolled  = useScrolled(scrollRef.current, 40);
 
-  /* Scroll en haut à chaque changement de page */
+  /* À chaque changement de page : on défile vers l'ancre demandée, sinon tout en haut */
   useEffect(() => {
-    if (scrollRef.current) scrollRef.current.scrollTop = 0;
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const anchorId = anchorRef.current;
+    if (anchorId) {
+      anchorRef.current = null;
+      // on attend que la nouvelle page soit rendue avant de mesurer
+      requestAnimationFrame(() => {
+        const target = document.getElementById(anchorId);
+        if (target) {
+          const delta = target.getBoundingClientRect().top - container.getBoundingClientRect().top;
+          container.scrollTop += delta - ANCHOR_OFFSET;
+        } else {
+          container.scrollTop = 0;
+        }
+      });
+    } else {
+      container.scrollTop = 0;
+    }
   }, [displayedPage]);
 
   const PageComponent = PAGE_MAP[displayedPage] ?? Home;
