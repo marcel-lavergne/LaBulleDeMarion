@@ -23,7 +23,7 @@ export default function Apropos({ navigate }) {
           <p className="reveal reveal--1 label-section" style={{ marginBottom: "1.2rem" }}>À propos</p>
           <h1 className="reveal reveal--2 title-display" style={{ fontSize: "clamp(2.2rem,3.2vw,3.4rem)", marginBottom: "2rem" }}>Marion Lefort</h1>
           {[
-            "Je suis Marion Lefort, et j'ai travaillé durant 18 ans à l'hôpital Necker Enfants Malades en cardio-pédiatrique en tant qu'infirmière. J'ai accompagné avec rigueur, délicatesse et une grande implication les nourrissons, les enfants et leurs familles dans des moments d'une grande intensité émotionnelle.",
+            "Je suis Marion Lefort, et j'ai travaillé durant 18 ans à l'hôpital Necker Enfants Malades en cardiologie pédiatrique en tant qu'infirmière. J'ai accompagné avec rigueur, délicatesse et une grande implication les nourrissons, les enfants et leurs familles dans des moments d'une grande intensité émotionnelle.",
             "Cette expérience a façonné une approche du soin profondément humaine, où chaque détail compte et où l'attention portée à l'autre est essentielle.",
             "Aujourd'hui, j'ai choisi de poursuivre cette vocation sous une forme différente — en me tournant vers un accompagnement centré sur le bien-être pré et post-natal, ainsi que sur les bébés.",
             "J'ai sélectionné uniquement des produits 100% français, naturels, vegan et profondément éthiques pour le respect de votre peau, celle de votre bébé et de notre environnement.",

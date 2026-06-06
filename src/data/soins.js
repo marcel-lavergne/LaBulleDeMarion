@@ -92,7 +92,8 @@ export const SOINS = [
       "Soulagement des tensions corporelles",
       "Soutien du bassin par le tissu Rebozo",
     ],
-    contrindications: null,
+    contrindications:       "Césarienne (attendre 6 semaines), fièvre, maladie cardiaque (pacemaker), grossesse avant 3 mois, varices et problème circulatoire grave.",
+
   },
   {
     id: "bain-enveloppe",
