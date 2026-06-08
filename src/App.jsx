@@ -10,6 +10,7 @@ import { useScrolled }   from "./hooks/useScrolled.js";
 
 import Navbar from "./components/layout/Navbar.jsx";
 import Footer from "./components/layout/Footer.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 import Home           from "./pages/Home.jsx";
 import Apropos        from "./pages/Apropos.jsx";
@@ -17,11 +18,9 @@ import Soins          from "./pages/Soins.jsx";
 import Accompagnement from "./pages/Accompagnement.jsx";
 import Temoignages    from "./pages/Temoignages.jsx";
 import Contact        from "./pages/Contact.jsx";
+import NotFound       from "./pages/NotFound.jsx";
 
 import "./styles/globals.css";
-
-/* Décalage pour l'ancrage = hauteur de la navbar (--navbar-height: 68px) + une marge */
-const ANCHOR_OFFSET = 68 + 16;
 
 /* Correspondance id → composant page */
 const PAGE_MAP = {
@@ -64,7 +63,8 @@ export default function App() {
     }
   }, [displayedPage]);
 
-  const PageComponent = PAGE_MAP[displayedPage] ?? Home;
+  /* Page inconnue → page 404 maison */
+  const PageComponent = PAGE_MAP[displayedPage] ?? NotFound;
 
   /* Classe CSS du wrapper de page */
   const wrapperClass = [
@@ -97,9 +97,13 @@ export default function App() {
         />
 
         <main>
-          <div className={wrapperClass} key={displayedPage}>
-            <PageComponent navigate={navigate} />
-          </div>
+          {/* Filet de sécurité : si une page plante, on affiche l'écran de secours
+              au lieu d'une page blanche. La clé réinitialise l'erreur au changement de page. */}
+          <ErrorBoundary key={displayedPage} navigate={navigate}>
+            <div className={wrapperClass} key={displayedPage}>
+              <PageComponent navigate={navigate} />
+            </div>
+          </ErrorBoundary>
         </main>
 
         <Footer navigate={navigate} />
