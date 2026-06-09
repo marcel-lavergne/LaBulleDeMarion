@@ -75,7 +75,6 @@
   padding: 4.5rem 8vw;
   text-align: center;
   border-top: 1px solid color-mix(in srgb, var(--color-terra) 12%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 12%, transparent);
   background-color: var(--color-lin);
   background-repeat: no-repeat;
   background-position: center;
@@ -108,8 +107,13 @@
 .featuredGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;            /* ligne blanche séparatrice entre les photos (épaisseur ajustable) */
-  background: #fff;    /* couleur de la ligne — passe en var(--color-lin) pour un blanc plus doux */
+  /* ── Séparateurs (PC) : une ligne FINE identique partout ──
+     gap = lignes entre les photos · border = lignes haut et bas.
+     Même épaisseur et même couleur → ensemble cohérent. */
+  gap: 1px;
+  background: color-mix(in srgb, var(--color-terra) 12%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--color-terra) 12%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 12%, transparent);
 }
 
 .featuredCard {
@@ -209,6 +213,13 @@
   .hero             { grid-template-columns: 1fr; }
   .heroImage        { height: 60vw; order: -1; }
   .heroText         { padding: 3rem 5vw; }
-  .featuredGrid     { grid-template-columns: 1fr; }
+  .featuredGrid     {
+    grid-template-columns: 1fr;
+    /* ── Séparateurs (mobile) : une ligne LARGE et BLANCHE partout ── */
+    gap: 8px;
+    background: #fff;
+    border-top: 8px solid #fff;
+    border-bottom: 8px solid #fff;
+  }
   .prenatalOverlay  { flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 3rem 5vw; }
 }
