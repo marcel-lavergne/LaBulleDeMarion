@@ -120,7 +120,7 @@ export const SOINS = [
     icon: "flower",
     image: imgBainThera,
     name: "Thérapeutique bain bébé",
-    certif: "Certifié Sonia Krief",
+    certif: "Certifié par Sonia Krief",
     duration: "1h30",
     price: "100€",
     cible: "Bébé",
