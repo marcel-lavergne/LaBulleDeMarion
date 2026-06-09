@@ -15,10 +15,15 @@ const COLOR_MAP = {
 const TABS = ["soins", "packs", "cadeaux"];
 const TAB_LABELS = { soins: "Les soins", packs: "Packs", cadeaux: "Cartes cadeaux" };
 
-export default function Soins({ navigate, anchor }) {
+export default function Soins({ navigate }) {
   // Si on arrive via une vignette de l'accueil (navigate("soins", id)),
-  // on ouvre directement l'accordéon du soin ciblé.
-  const [openId, setOpenId] = useState(anchor ?? null);
+  // useNavigation pose l'URL "/soins#id". On lit ce hash pour ouvrir
+  // directement l'accordéon du soin ciblé.
+  const [openId, setOpenId] = useState(() => {
+    if (typeof window === "undefined") return null;
+    const id = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    return id || null;
+  });
   const [activeTab, setActiveTab] = useState("soins");
   const toggle = (id) => setOpenId(prev => prev === id ? null : id);
 
