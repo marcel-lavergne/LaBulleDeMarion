@@ -106,7 +106,11 @@ export default function Contact() {
 
           <div className={styles.infoBlock}>
             <p className={styles.infoLabel}>Zone d'intervention</p>
-            <p className={styles.infoValue}>À domicile · Région parisienne</p>
+            <p className={styles.infoValue}>À domicile — Essonne (91), Hauts-de-Seine (92), Val-de-Marne (94)</p>
+            <p style={{ fontSize: ".82rem", marginTop: ".45rem", opacity: .8, fontWeight: 300, lineHeight: 1.6 }}>
+              Dans un rayon de 15 km autour de Massy. Au-delà, un supplément
+              kilométrique de 0,15 €/km s'applique.
+            </p>
           </div>
 
           <div className={styles.infoBlock}>

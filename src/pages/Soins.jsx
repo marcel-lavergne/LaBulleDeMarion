@@ -57,6 +57,7 @@ export default function Soins({ navigate }) {
                 <div key={soin.id} id={soin.id} className={`${styles.card} ${isOpen ? styles["card--open"] : ""}`} onClick={() => toggle(soin.id)}>
                   <div className={styles.cardMedia}>
                     <img className={styles.cardImage} src={soin.image} alt={soin.name} loading="lazy" />
+                    {soin.certif && <span className={styles.certifBadge}>✓ {soin.certif}</span>}
                     <span className={styles.iconBadge} style={{ background: COLOR_MAP[soin.color] }}>
                       <IconComp size={26} color="#faf3e9" />
                     </span>

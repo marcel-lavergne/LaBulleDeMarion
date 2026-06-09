@@ -15,7 +15,7 @@ import feuillage from "../assets/feuillage-large.jpg";
    → les photos restent automatiquement identiques à la page Soins.
    Au clic, on défile jusqu'au soin correspondant. */
 const FEATURED_SOINS = [
-  { id: "bain-therapeutique",          label: "Bain thérapeutique" },
+  { id: "bain-therapeutique",          label: "Thérapeutique bain bébé" },
   { id: "massage-bebe-accompagnement", label: "Massage bébé" },
   { id: "rebozo",                      label: "Rituel Rebozo" },
 ];

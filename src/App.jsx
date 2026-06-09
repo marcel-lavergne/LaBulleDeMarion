@@ -19,6 +19,7 @@ import Accompagnement from "./pages/Accompagnement.jsx";
 import Temoignages    from "./pages/Temoignages.jsx";
 import Contact        from "./pages/Contact.jsx";
 import NotFound       from "./pages/NotFound.jsx";
+import Admin          from "./pages/Admin.jsx";
 
 import "./styles/globals.css";
 
@@ -30,6 +31,7 @@ const PAGE_MAP = {
   accompagnement: Accompagnement,
   temoignages:    Temoignages,
   contact:        Contact,
+  admin:          Admin,
 };
 
 export default function App() {

@@ -24,6 +24,7 @@ const PAGE_TO_PATH = {
   packs:       "/packs",
   temoignages: "/temoignages",
   contact:     "/contact",
+  admin:       "/admin",
 };
 const PATH_TO_PAGE = Object.fromEntries(
   Object.entries(PAGE_TO_PATH).map(([page, path]) => [path, page])

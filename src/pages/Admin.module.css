@@ -1,0 +1,33 @@
+/* ─────────────────────────────────────────────
+   Admin — modération des témoignages
+───────────────────────────────────────────── */
+
+.wrap { max-width: 760px; margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) 6vw 4rem; }
+
+.topbar { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.refresh { background: none; border: 1px solid color-mix(in srgb, var(--color-terra) 30%, transparent); color: var(--color-terra); border-radius: 99px; padding: .45rem 1rem; font-size: .72rem; letter-spacing: .05em; cursor: pointer; }
+.refresh:hover { background: color-mix(in srgb, var(--color-terra) 8%, transparent); }
+
+.sectionTitle { font-family: var(--font-body); font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--color-rose); margin: 0 0 1rem; }
+.empty { font-size: .82rem; color: var(--color-muted); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
+
+.row { background: var(--color-cream); border: 1px solid color-mix(in srgb, var(--color-rose) 16%, transparent); border-radius: 14px; padding: 1.3rem 1.4rem; margin-bottom: 1rem; }
+.row--pending { border-color: color-mix(in srgb, var(--color-terra) 40%, transparent); background: color-mix(in srgb, var(--color-terra) 7%, var(--color-cream)); }
+
+.rowHead { display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; margin-bottom: .5rem; }
+.rowName { font-size: .85rem; font-weight: 500; color: var(--color-terra); }
+.rowDetail { font-size: .72rem; color: var(--color-rose); }
+.rowText { font-size: .82rem; line-height: 1.75; color: var(--color-muted); font-weight: 300; font-style: italic; margin: 0 0 1rem; }
+.tagPending { font-size: .6rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--color-rouge); background: var(--color-lin); padding: .2rem .55rem; border-radius: 99px; white-space: nowrap; }
+
+.actions { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.danger { background: none; border: none; color: var(--color-rose); font-size: .72rem; letter-spacing: .04em; cursor: pointer; text-decoration: underline; padding: .3rem .2rem; }
+.danger:hover { color: var(--color-rouge); }
+
+.editBox { display: block; }
+
+/* Connexion */
+.loginWrap { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 3rem 6vw; }
+.loginCard { width: 100%; max-width: 360px; background: var(--color-cream); border: 1px solid color-mix(in srgb, var(--color-rose) 16%, transparent); border-radius: 16px; padding: 2.2rem 2rem; }
+
+.error { font-size: .8rem; color: var(--color-rouge); font-weight: 300; margin-bottom: 1rem; }

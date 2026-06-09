@@ -1,0 +1,17 @@
+# Configuration Netlify — La Bulle de Marion
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Dossier des fonctions serveur (témoignages + admin)
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Repli SPA : toutes les URL non-fichiers renvoient index.html
+# (les fonctions /.netlify/functions/* sont servies AVANT cette règle)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
