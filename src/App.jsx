@@ -22,6 +22,10 @@ import NotFound       from "./pages/NotFound.jsx";
 
 import "./styles/globals.css";
 
+/* Décalage de défilement pour ne pas masquer la cible derrière la navbar
+   sticky (--navbar-height = 68px) + une légère respiration. */
+const ANCHOR_OFFSET = 84;
+
 /* Correspondance id → composant page */
 const PAGE_MAP = {
   home:           Home,
@@ -40,28 +44,43 @@ export default function App() {
   const scrollRef = useRef(null);
   const scrolled  = useScrolled(scrollRef.current, 40);
 
-  /* À chaque changement de page : on défile vers l'ancre demandée, sinon tout en haut */
+  /* À chaque changement de page : on défile vers l'ancre demandée, sinon tout en haut.
+     On attend que la page soit pleinement "visible" (transform posé) ET que les polices
+     soient chargées, sinon la mesure de position est faussée et on tombe à côté. */
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
     const anchorId = anchorRef.current;
-    if (anchorId) {
-      anchorRef.current = null;
-      // on attend que la nouvelle page soit rendue avant de mesurer
-      requestAnimationFrame(() => {
-        const target = document.getElementById(anchorId);
-        if (target) {
-          const delta = target.getBoundingClientRect().top - container.getBoundingClientRect().top;
-          container.scrollTop += delta - ANCHOR_OFFSET;
-        } else {
-          container.scrollTop = 0;
-        }
-      });
-    } else {
+
+    // Pas d'ancre → on remonte simplement en haut dès le swap de page
+    if (!anchorId) {
       container.scrollTop = 0;
+      return;
     }
-  }, [displayedPage]);
+
+    // Ancre demandée → on n'agit que lorsque la page est posée (transform à 0)
+    if (pagePhase !== "visible") return;
+    anchorRef.current = null;
+
+    const scrollToAnchor = () => {
+      const target = document.getElementById(anchorId);
+      if (!target) {
+        container.scrollTop = 0;
+        return;
+      }
+      const delta =
+        target.getBoundingClientRect().top - container.getBoundingClientRect().top;
+      container.scrollTop += delta - ANCHOR_OFFSET;
+    };
+
+    // document.fonts.ready évite le décalage dû au chargement de la police ;
+    // le double rAF garantit que le layout est stabilisé avant de mesurer.
+    const fontsReady = document.fonts?.ready ?? Promise.resolve();
+    fontsReady.then(() =>
+      requestAnimationFrame(() => requestAnimationFrame(scrollToAnchor))
+    );
+  }, [displayedPage, pagePhase]);
 
   /* Page inconnue → page 404 maison */
   const PageComponent = PAGE_MAP[displayedPage] ?? NotFound;
@@ -101,7 +120,7 @@ export default function App() {
               au lieu d'une page blanche. La clé réinitialise l'erreur au changement de page. */}
           <ErrorBoundary key={displayedPage} navigate={navigate}>
             <div className={wrapperClass} key={displayedPage}>
-              <PageComponent navigate={navigate} />
+              <PageComponent navigate={navigate} anchor={anchorRef.current} />
             </div>
           </ErrorBoundary>
         </main>

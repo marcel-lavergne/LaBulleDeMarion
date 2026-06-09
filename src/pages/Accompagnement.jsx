@@ -2,6 +2,7 @@ import Button from "../components/ui/Button.jsx";
 import styles from "./Accompagnement.module.css";
 import accompagnementImg from "../assets/accompagnement.jpg";
 
+
 export default function Accompagnement({ navigate }) {
   return (
     <div>
