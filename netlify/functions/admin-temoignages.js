@@ -9,7 +9,7 @@
    • DELETE → supprimer un témoignage           (?id=...)
 ═══════════════════════════════════════════════════════════════ */
 
-import { readAll, store, json } from "./_data.js";
+import { readAll, writeAll, json } from "./_data.js";
 
 /* Comparaison à temps constant (évite les attaques par mesure de durée) */
 function passwordOk(req) {
@@ -24,8 +24,6 @@ function passwordOk(req) {
 export default async (req) => {
   if (!passwordOk(req)) return json({ error: "Non autorisé." }, 401);
 
-  const s = store();
-
   if (req.method === "GET") {
     const all = await readAll();
     all.sort((a, b) => b.createdAt - a.createdAt);
@@ -37,9 +35,11 @@ export default async (req) => {
     try { body = await req.json(); } catch { /* ignore */ }
     if (!body?.id) return json({ error: "id manquant." }, 400);
 
-    const current = await s.get(body.id, { type: "json" });
-    if (!current) return json({ error: "Témoignage introuvable." }, 404);
+    const all = await readAll();
+    const idx = all.findIndex((t) => t.id === body.id);
+    if (idx === -1) return json({ error: "Témoignage introuvable." }, 404);
 
+    const current = all[idx];
     const updated = {
       ...current,
       author:   body.author   !== undefined ? body.author.toString().slice(0, 120) : current.author,
@@ -48,14 +48,17 @@ export default async (req) => {
       approved: body.approved !== undefined ? !!body.approved : current.approved,
     };
 
-    await s.setJSON(body.id, updated);
+    all[idx] = updated;
+    await writeAll(all);
     return json(updated);
   }
 
   if (req.method === "DELETE") {
     const id = new URL(req.url).searchParams.get("id");
     if (!id) return json({ error: "id manquant." }, 400);
-    await s.delete(id);
+
+    const all = await readAll();
+    await writeAll(all.filter((t) => t.id !== id));
     return json({ ok: true });
   }
 

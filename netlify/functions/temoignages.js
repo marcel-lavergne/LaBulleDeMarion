@@ -5,7 +5,7 @@
             invisible tant que tu ne l'as pas validé dans /admin)
 ═══════════════════════════════════════════════════════════════ */
 
-import { readAll, store, json } from "./_data.js";
+import { readAll, writeAll, json } from "./_data.js";
 
 export default async (req) => {
   if (req.method === "GET") {
@@ -29,16 +29,17 @@ export default async (req) => {
       return json({ error: "Le nom et le témoignage sont obligatoires." }, 400);
     }
 
-    const t = {
+    const all = await readAll();
+    all.push({
       id: `t-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
       author: author.slice(0, 120),
       detail: detail.slice(0, 160),
       text: text.slice(0, 2000),
       approved: false,            // ← en attente de validation
       createdAt: Date.now(),
-    };
+    });
+    await writeAll(all);
 
-    await store().setJSON(t.id, t);
     return json({ ok: true }, 201);
   }
 

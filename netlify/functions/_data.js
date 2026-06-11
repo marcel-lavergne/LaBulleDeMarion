@@ -8,6 +8,7 @@
 import { getStore } from "@netlify/blobs";
 
 const STORE_NAME = "temoignages";
+const KEY = "collection"; // tout est rangé dans UNE seule entrée JSON (lecture/écriture par clé = fiable)
 
 /* Amorçage : la 1re fois (stockage vide), on importe les témoignages
    existants, déjà validés. createdAt décroissant pour conserver l'ordre. */
@@ -47,23 +48,49 @@ const SEED = [
 ];
 
 export function store() {
-  return getStore(STORE_NAME);
+  // Cohérence FORTE : une écriture est immédiatement visible en lecture
+  // (lectures un peu plus lentes, mais plus de décalage « en retard »).
+  return getStore({ name: STORE_NAME, consistency: "strong" });
 }
 
-/* Lit tous les témoignages. Amorce le stockage s'il est vide. */
+/* Lit la liste complète depuis l'entrée unique « collection ».
+   Si elle n'existe pas encore, on l'initialise UNE fois — sans jamais
+   réécrire par-dessus ensuite (donc les modifications sont préservées). */
 export async function readAll() {
   const s = store();
-  const { blobs } = await s.list();
 
-  if (!blobs || blobs.length === 0) {
-    await Promise.all(SEED.map((t) => s.setJSON(t.id, t)));
-    return [...SEED];
+  const existing = await s.get(KEY, { type: "json" });
+  if (Array.isArray(existing)) return existing;
+
+  // Première initialisation : on récupère d'éventuels témoignages déjà
+  // stockés par l'ancienne version (une entrée par clé) pour ne rien perdre.
+  let initial = [];
+  try {
+    const { blobs } = await s.list();
+    const legacy = (
+      await Promise.all(
+        blobs
+          .filter((b) => b.key !== KEY)
+          .map((b) => s.get(b.key, { type: "json" }).catch(() => null))
+      )
+    ).filter((t) => t && t.id && t.text);
+    initial = legacy;
+  } catch {
+    /* listing indisponible : on partira du seed */
   }
 
-  const items = await Promise.all(
-    blobs.map((b) => s.get(b.key, { type: "json" }).catch(() => null))
-  );
-  return items.filter(Boolean);
+  // Complète avec les témoignages d'origine manquants (sans écraser les existants)
+  const ids = new Set(initial.map((t) => t.id));
+  for (const t of SEED) if (!ids.has(t.id)) initial.push(t);
+  if (initial.length === 0) initial = [...SEED];
+
+  await s.setJSON(KEY, initial);
+  return initial;
+}
+
+/* Écrit la liste complète (remplace l'entrée unique). */
+export async function writeAll(list) {
+  await store().setJSON(KEY, list);
 }
 
 /* Réponse JSON courte */
