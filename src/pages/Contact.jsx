@@ -109,7 +109,7 @@ export default function Contact() {
             <p className={styles.infoValue}>À domicile — Essonne (91), Hauts-de-Seine (92), Val-de-Marne (94)</p>
             <p style={{ fontSize: ".82rem", marginTop: ".45rem", opacity: .8, fontWeight: 300, lineHeight: 1.6 }}>
               Dans un rayon de 15 km autour de Massy. Au-delà, un supplément
-              kilométrique de 0,15 €/km s'applique.
+              kilométrique de 0,30 €/km s'applique pour un aller et un retour.
             </p>
           </div>
 

@@ -32,7 +32,7 @@ export const PACKS = [
   {
     id: "pack-5",
     name: "Thérapeutique bain bébé + Atelier découverte massage bébé",
-    price: "140€",
+    price: "145€",
     originalPrice: "155€",
   },
   {
