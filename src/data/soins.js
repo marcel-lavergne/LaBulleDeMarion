@@ -47,7 +47,7 @@ export const SOINS = [
     cible: "Femme enceinte",
     color: "rose",
     description:
-      "Un temps d'échange suivi d'un massage d'1h30 pour relâcher les tensions, se reconnecter à son corps et à son bébé dans une ambiance apaisante et sécurisante. Disponible à partir de juillet.",
+      "Un temps d'échange suivi d'un massage d'1h15 pour relâcher les tensions, se reconnecter à son corps et à son bébé dans une ambiance apaisante et sécurisante. Disponible à partir de juillet.",
     apporte: [
       "Détente physique et mentale",
       "Reconnexion au corps",
