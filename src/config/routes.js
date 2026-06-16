@@ -4,7 +4,7 @@
    Pour modifier une adresse ou un texte SEO : c'est ici, en un seul endroit.
 ═══════════════════════════════════════════════════════════════ */
 
-export const SITE_URL = "https://labulledemarion.netlify.app";
+export const SITE_URL = "https://labulledemarion.fr";
 
 export const ROUTES = [
   {
