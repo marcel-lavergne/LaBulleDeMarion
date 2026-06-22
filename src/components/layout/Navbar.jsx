@@ -13,6 +13,7 @@ import { idToPath } from "../../config/routes.js";
 import styles from "./Navbar.module.css";
 
 const NAV_LINKS = [
+  { id: "home",           label: "Accueil" },
   { id: "apropos",        label: "À propos" },
   { id: "soins",          label: "Les soins" },
   { id: "accompagnement", label: "L'accompagnement" },

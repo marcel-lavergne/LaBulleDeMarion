@@ -13,7 +13,7 @@
        • Pendant les tests :  "lavergne.marcel@gmail.com"
        • Quand le site sera prêt, remplace par :  "contact@labulledemarion.fr"
 ─────────────────────────────────────────────────────────────── */
-export const CONTACT_EMAIL = "lavergne.marcel@gmail.com";
+export const CONTACT_EMAIL = "contact@labulledemarion.fr";
 
 
 /* ───────────────────────────────────────────────────────────────
@@ -31,9 +31,9 @@ export const CONTACT_EMAIL = "lavergne.marcel@gmail.com";
    Ces 3 valeurs ne sont pas secrètes (la "Public Key" est faite
    pour être visible côté navigateur), tu peux les laisser ici.
 ─────────────────────────────────────────────────────────────── */
-export const EMAILJS_SERVICE_ID  = "TON_SERVICE_ID";
-export const EMAILJS_TEMPLATE_ID = "TON_TEMPLATE_ID";
-export const EMAILJS_PUBLIC_KEY  = "TA_CLE_PUBLIQUE";
+export const EMAILJS_SERVICE_ID  = "service_jf4652c";
+export const EMAILJS_TEMPLATE_ID = "template_6uf0xhe";
+export const EMAILJS_PUBLIC_KEY  = "D130WqroRLBnYd3mB";
 
 
 /* Vrai uniquement quand les 3 clés ont été renseignées.

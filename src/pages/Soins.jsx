@@ -16,7 +16,14 @@ const TABS = ["soins", "packs", "cadeaux"];
 const TAB_LABELS = { soins: "Les soins", packs: "Packs", cadeaux: "Cartes cadeaux" };
 
 export default function Soins({ navigate }) {
-  const [openId, setOpenId] = useState(null);
+  // Si on arrive via une vignette de l'accueil (navigate("soins", id)),
+  // useNavigation pose l'URL "/soins#id". On lit ce hash pour ouvrir
+  // directement l'accordéon du soin ciblé.
+  const [openId, setOpenId] = useState(() => {
+    if (typeof window === "undefined") return null;
+    const id = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    return id || null;
+  });
   const [activeTab, setActiveTab] = useState("soins");
   const toggle = (id) => setOpenId(prev => prev === id ? null : id);
 
@@ -47,9 +54,10 @@ export default function Soins({ navigate }) {
               const IconComp = ICON_MAP[soin.icon] ?? IconFlower;
               const isOpen   = openId === soin.id;
               return (
-                <div key={soin.id} className={`${styles.card} ${isOpen ? styles["card--open"] : ""}`} onClick={() => toggle(soin.id)}>
+                <div key={soin.id} id={soin.id} className={`${styles.card} ${isOpen ? styles["card--open"] : ""}`} onClick={() => toggle(soin.id)}>
                   <div className={styles.cardMedia}>
                     <img className={styles.cardImage} src={soin.image} alt={soin.name} loading="lazy" />
+                    {soin.certif && <span className={styles.certifBadge}>✓ {soin.certif}</span>}
                     <span className={styles.iconBadge} style={{ background: COLOR_MAP[soin.color] }}>
                       <IconComp size={26} color="#faf3e9" />
                     </span>
@@ -76,7 +84,7 @@ export default function Soins({ navigate }) {
             })}
           </div>
           <div className={styles.cta}>
-            <Button variant="fill" onClick={() => navigate("contact")}>Prendre contact</Button>
+            <Button variant="fill" onClick={() => navigate("contact")}>Prendre rendez-vous</Button>
           </div>
         </>
       )}

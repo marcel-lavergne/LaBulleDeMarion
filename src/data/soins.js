@@ -13,6 +13,7 @@ import imgBainThera    from "../assets/soin-bain-therapeutique.jpg";
 import imgMassageBebe  from "../assets/soin-massage-bebe.jpg";
 import imgAtelier      from "../assets/soin-atelier-bebe.jpg";
 import imgVentre       from "../assets/soin-maux-ventre.jpg";
+import imgEnfant from "../assets/soin-massage-enfant.jpg";
 
 export const SOINS = [
   {
@@ -20,7 +21,7 @@ export const SOINS = [
     icon: "flower",
     image: imgRebozo,
     name: "Rituel Rebozo",
-    duration: "3h30",
+    duration: "3h00",
     price: "200€",
     cible: "Femme",
     color: "terra",
@@ -41,12 +42,12 @@ export const SOINS = [
     icon: "drops",
     image: imgPrenatal,
     name: "Massage femme enceinte",
-    duration: "2h",
+    duration: "1h30",
     price: "80€",
     cible: "Femme enceinte",
     color: "rose",
     description:
-      "Un temps d'échange suivi d'un massage d'1h pour relâcher les tensions, se reconnecter à son corps et à son bébé dans une ambiance apaisante et sécurisante.",
+      "Un temps d'échange suivi d'un massage d'1h15 pour relâcher les tensions, se reconnecter à son corps et à son bébé dans une ambiance apaisante et sécurisante. Disponible à partir de juillet.",
     apporte: [
       "Détente physique et mentale",
       "Reconnexion au corps",
@@ -91,15 +92,15 @@ export const SOINS = [
       "Soulagement des tensions corporelles",
       "Soutien du bassin par le tissu Rebozo",
     ],
-    contrindications: null,
+    contrindications:"Césarienne (attendre 6 semaines), fièvre, maladie cardiaque (pacemaker), grossesse avant 3 mois, varices et problème circulatoire grave.",
   },
   {
     id: "bain-enveloppe",
     icon: "drops",
     image: imgBainEnv,
     name: "Bain enveloppé",
-    duration: "2h30",
-    price: "100€",
+    duration: "1h30",
+    price: "90€",
     cible: "Bébé",
     color: "rose",
     description:
@@ -118,9 +119,10 @@ export const SOINS = [
     id: "bain-therapeutique",
     icon: "flower",
     image: imgBainThera,
-    name: "Bain thérapeutique",
-    duration: "2h30",
-    price: "115€",
+    name: "Thérapeutique bain bébé",
+    certif: "Certifié par Sonia Krief",
+    duration: "1h30",
+    price: "100€",
     cible: "Bébé",
     color: "rouge",
     description:
@@ -177,7 +179,7 @@ export const SOINS = [
     id: "maux-de-ventre",
     icon: "drops",
     image: imgVentre,
-    name: "Massage maux de ventre",
+    name: "Massage spécial maux de ventre",
     duration: "1h",
     price: "55€",
     cible: "Bébé",
@@ -193,4 +195,23 @@ export const SOINS = [
     ],
     contrindications: null,
   },
+  {
+  id: "massage-enfant",
+  icon: "feet",
+  image: imgEnfant,
+  name: "Massage enfant",
+  duration: "1h",
+  price: "55€",
+  cible: "6 à 14 ans",
+  color: "terra",
+  description:
+    "Comprend un temps d'échange et de préparation, puis un massage de 45 minutes : tout le corps ou seulement certaines parties, selon le choix de l'enfant. La présence d'un adulte est obligatoire durant tout le soin.",
+  apporte: [
+    "Relaxation et apaisement",
+    "Améliore le sommeil",
+    "Réduit le stress",
+    "Libère les tensions du quotidien",
+  ],
+  contrindications: null,
+},
 ];

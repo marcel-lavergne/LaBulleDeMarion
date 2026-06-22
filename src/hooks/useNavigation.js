@@ -1,48 +1,59 @@
 /* ─────────────────────────────────────────────
    useNavigation — La Bulle de Marion
-   Navigation SPA avec effet rideau ET vraies URLs :
-   1. Le rideau terracotta descend
-   2. La page change (invisible) + l'URL et le titre se mettent à jour
-   3. Le rideau remonte
-   4. La nouvelle page se révèle
-   Gère aussi les boutons Précédent / Suivant du navigateur.
+   Navigation SPA avec effet rideau + gestion de
+   l'URL et de l'historique du navigateur.
+   (Le bouton Précédent/Suivant fonctionne enfin.)
+
+   • navigate("soins")
+        -> change de page
+   • navigate("soins", "rituel-rebozo")
+        -> change de page ET défile jusqu'à
+           l'élément id="rituel-rebozo"
 ───────────────────────────────────────────── */
 
 import { useState, useCallback, useRef, useEffect } from "react";
-import { pathToId, idToPath, metaFor, SITE_URL } from "../config/routes.js";
 
 const CURTAIN_DURATION = 380; // ms — doit correspondre à --curtain-duration dans globals.css
 const FADE_DELAY       = 80;  // ms entre la fin du rideau et le fadeIn du contenu
 
-/** Met à jour le titre, la meta description et le lien canonique de la page */
-function applyMeta(id) {
-  if (typeof document === "undefined") return;
-  const meta = metaFor(id);
+/* Correspondance page <-> URL */
+const PAGE_TO_PATH = {
+  home:        "/",
+  apropos:     "/apropos",
+  soins:       "/soins",
+  packs:       "/packs",
+  temoignages: "/temoignages",
+  contact:     "/contact",
+  admin:       "/admin",
+};
+const PATH_TO_PAGE = Object.fromEntries(
+  Object.entries(PAGE_TO_PATH).map(([page, path]) => [path, page])
+);
 
-  document.title = meta.title;
-
-  let desc = document.querySelector('meta[name="description"]');
-  if (!desc) {
-    desc = document.createElement("meta");
-    desc.setAttribute("name", "description");
-    document.head.appendChild(desc);
-  }
-  desc.setAttribute("content", meta.description);
-
-  const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.setAttribute("href", SITE_URL + idToPath(id));
+/* Quelle page d'après l'URL courante (rechargement / lien direct) */
+function pageFromLocation() {
+  return PATH_TO_PAGE[window.location.pathname] || "home";
 }
 
-export function useNavigation() {
-  const initial =
-    typeof window !== "undefined" ? pathToId(window.location.pathname) : "home";
+/* Construit l'URL d'une page (+ ancre éventuelle) */
+function buildUrl(page, anchor) {
+  const path = PAGE_TO_PATH[page] || "/";
+  return anchor ? `${path}#${anchor}` : path;
+}
 
-  const [currentPage,   setCurrentPage]   = useState(initial);
-  const [displayedPage, setDisplayedPage] = useState(initial);
-  const [pagePhase,     setPagePhase]     = useState("visible"); // "entering" | "visible"
-  const [curtainClass,  setCurtainClass]  = useState(null);       // null | "in" | "out"
+export function useNavigation(initialPage) {
+  // Si App ne passe rien, on déduit la page de départ depuis l'URL
+  const startPage = initialPage || pageFromLocation();
 
-  const timers = useRef([]);
+  const [currentPage,   setCurrentPage]   = useState(startPage);
+  const [displayedPage, setDisplayedPage] = useState(startPage);
+  const [pagePhase,     setPagePhase]     = useState("visible");  // "entering" | "visible"
+  const [curtainClass,  setCurtainClass]  = useState(null);        // null | "in" | "out"
+
+  const timers        = useRef([]);
+  const pendingAnchor = useRef(null);
+  const currentRef    = useRef(startPage); // évite les fermetures périmées dans popstate
+
   const schedule = (fn, delay) => {
     const id = setTimeout(fn, delay);
     timers.current.push(id);
@@ -52,59 +63,81 @@ export function useNavigation() {
     timers.current = [];
   };
 
-  /**
-   * @param {string} targetPage  – id de la page cible
-   * @param {object} [opts]
-   * @param {boolean} [opts.push=true] – false quand l'URL a déjà changé
-   *                                     (boutons précédent/suivant)
-   */
-  const navigate = useCallback(
-    (targetPage, { push = true } = {}) => {
-      if (targetPage === currentPage) return;
+  const scrollToAnchor = (anchor) => {
+    if (!anchor) return;
+    const el = document.getElementById(anchor);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
-      clearTimers();
+  /* Cœur de la navigation.
+     push = true  -> on ajoute une entrée d'historique (clic normal)
+     push = false -> on NE ré-empile PAS (déclenché par le bouton retour) */
+  const goTo = useCallback((targetPage, { anchor = null, push = true } = {}) => {
+    // Déjà sur la page -> on se contente de défiler vers l'ancre
+    if (targetPage === currentRef.current) {
+      scrollToAnchor(anchor);
+      return;
+    }
 
-      // Met à jour l'URL (sauf si le navigateur l'a déjà fait via précédent/suivant)
-      if (push && typeof window !== "undefined") {
-        window.history.pushState({ page: targetPage }, "", idToPath(targetPage));
+    clearTimers();
+    pendingAnchor.current = anchor;
+    currentRef.current = targetPage;
+
+    // 1 — le rideau descend
+    setCurtainClass("in");
+
+    // 2 — swap du contenu sous le rideau + mise à jour de l'URL
+    schedule(() => {
+      setDisplayedPage(targetPage);
+      setCurrentPage(targetPage);
+      setPagePhase("entering");
+
+      if (push) {
+        window.history.pushState(
+          { page: targetPage, anchor },
+          "",
+          buildUrl(targetPage, anchor)
+        );
       }
+    }, CURTAIN_DURATION);
 
-      // Étape 1 — le rideau descend
-      setCurtainClass("in");
+    // 3 — le rideau remonte
+    schedule(() => setCurtainClass("out"), CURTAIN_DURATION + 40);
 
-      // Étape 2 — contenu swappé + URL/titre mis à jour pendant que le rideau couvre tout
-      schedule(() => {
-        setDisplayedPage(targetPage);
-        setCurrentPage(targetPage);
-        setPagePhase("entering");
-        applyMeta(targetPage);
-      }, CURTAIN_DURATION);
+    // 4 — la page se révèle puis on défile vers l'ancre s'il y en a une
+    schedule(() => {
+      setPagePhase("visible");
+      scrollToAnchor(pendingAnchor.current);
+      pendingAnchor.current = null;
+    }, CURTAIN_DURATION + FADE_DELAY + 60);
 
-      // Étape 3 — le rideau remonte
-      schedule(() => setCurtainClass("out"), CURTAIN_DURATION + 40);
+    // 5 — nettoyage de la classe rideau
+    schedule(() => setCurtainClass(null), CURTAIN_DURATION * 2 + 100);
+  }, []);
 
-      // Étape 4 — le contenu se révèle en fondu
-      schedule(() => setPagePhase("visible"), CURTAIN_DURATION + FADE_DELAY + 60);
-
-      // Étape 5 — nettoyage de la classe rideau
-      schedule(() => setCurtainClass(null), CURTAIN_DURATION * 2 + 100);
-    },
-    [currentPage]
+  /* API publique : navigate("soins") ou navigate("soins", "mon-ancre") */
+  const navigate = useCallback(
+    (targetPage, anchor = null) => goTo(targetPage, { anchor, push: true }),
+    [goTo]
   );
 
-  // Boutons Précédent / Suivant du navigateur
+  /* Branche le bouton Précédent / Suivant du navigateur */
   useEffect(() => {
-    const onPop = () => navigate(pathToId(window.location.pathname), { push: false });
-    window.addEventListener("popstate", onPop);
-    return () => window.removeEventListener("popstate", onPop);
-  }, [navigate]);
+    // état initial posé sur la 1re entrée d'historique
+    window.history.replaceState(
+      { page: currentRef.current, anchor: null },
+      "",
+      buildUrl(currentRef.current)
+    );
 
-  // Au premier chargement : applique le titre/description de la page d'arrivée
-  useEffect(() => {
-    applyMeta(initial);
-    if (typeof window !== "undefined") {
-      window.history.replaceState({ page: initial }, "", idToPath(initial));
-    }
+    const onPopState = (e) => {
+      const targetPage = e.state?.page || pageFromLocation();
+      const anchor     = e.state?.anchor || null;
+      goTo(targetPage, { anchor, push: false }); // push:false sinon boucle infinie
+    };
+
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

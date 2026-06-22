@@ -2,6 +2,7 @@ import Button from "../components/ui/Button.jsx";
 import styles from "./Accompagnement.module.css";
 import accompagnementImg from "../assets/accompagnement.jpg";
 
+
 export default function Accompagnement({ navigate }) {
   return (
     <div>
@@ -23,7 +24,7 @@ export default function Accompagnement({ navigate }) {
           Mon engagement reste inchangé : offrir un soin d'une grande qualité, dans l'écoute et la bienveillance, pour vous accompagner avec justesse dans ces moments précieux de vie.
         </p>
         <p className={styles.devise}>
-          <em>Prendre soin, avec exigence. Accueillir, avec délicatesse. Transmettre, avec cœur.</em>
+          <em>Prendre soin, avec exigence. Accueillir, avec délicatesse. Transmettre, avec coeur.</em>
         </p>
       </section>
 
@@ -35,7 +36,7 @@ export default function Accompagnement({ navigate }) {
         {[
           { titre: "Sur-mesure", texte: "Chaque accompagnement est pensé en fonction de votre histoire, de vos besoins et de ceux de votre enfant." },
           { titre: "À domicile", texte: "Je me déplace en région parisienne pour que vous puissiez recevoir le soin dans votre propre espace, en toute sérénité." },
-          { titre: "Bienveillance", texte: "Formée après 18 ans en soins intensifs pédiatriques, j'apporte une présence attentive et un geste professionnel." },
+          { titre: "Bienveillance", texte: "Formée après 18 ans en cardiologie pédiatriques, j'apporte une présence attentive et un geste professionnel." },
         ].map(({ titre, texte }) => (
           <div key={titre} className={styles.valueCard}>
             <h3 className={styles.valueTitle}>{titre}</h3>

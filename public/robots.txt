@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin
 
-Sitemap: https://labulledemarion.netlify.app/sitemap.xml
+Sitemap: https://labulledemarion.fr/sitemap.xml

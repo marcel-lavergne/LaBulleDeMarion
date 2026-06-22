@@ -10,6 +10,7 @@ import { useScrolled }   from "./hooks/useScrolled.js";
 
 import Navbar from "./components/layout/Navbar.jsx";
 import Footer from "./components/layout/Footer.jsx";
+import ErrorBoundary from "./components/ErrorBoundary.jsx";
 
 import Home           from "./pages/Home.jsx";
 import Apropos        from "./pages/Apropos.jsx";
@@ -17,6 +18,8 @@ import Soins          from "./pages/Soins.jsx";
 import Accompagnement from "./pages/Accompagnement.jsx";
 import Temoignages    from "./pages/Temoignages.jsx";
 import Contact        from "./pages/Contact.jsx";
+import NotFound       from "./pages/NotFound.jsx";
+import Admin          from "./pages/Admin.jsx";
 
 import "./styles/globals.css";
 
@@ -28,22 +31,27 @@ const PAGE_MAP = {
   accompagnement: Accompagnement,
   temoignages:    Temoignages,
   contact:        Contact,
+  admin:          Admin,
 };
 
 export default function App() {
   const { currentPage, displayedPage, pagePhase, curtainClass, navigate } =
-    useNavigation();
+    useNavigation("");
 
   /* Référence sur le conteneur scrollable */
   const scrollRef = useRef(null);
   const scrolled  = useScrolled(scrollRef.current, 40);
 
-  /* Scroll en haut à chaque changement de page */
+  /* Le défilement vers une ancre est géré par useNavigation (scrollIntoView).
+     Ici on se contente de remonter en haut quand on change de page SANS ancre. */
   useEffect(() => {
-    if (scrollRef.current) scrollRef.current.scrollTop = 0;
+    const container = scrollRef.current;
+    if (!container) return;
+    if (!window.location.hash) container.scrollTop = 0;
   }, [displayedPage]);
 
-  const PageComponent = PAGE_MAP[displayedPage] ?? Home;
+  /* Page inconnue → page 404 maison */
+  const PageComponent = PAGE_MAP[displayedPage] ?? NotFound;
 
   /* Classe CSS du wrapper de page */
   const wrapperClass = [
@@ -76,9 +84,13 @@ export default function App() {
         />
 
         <main>
-          <div className={wrapperClass} key={displayedPage}>
-            <PageComponent navigate={navigate} />
-          </div>
+          {/* Filet de sécurité : si une page plante, on affiche l'écran de secours
+              au lieu d'une page blanche. La clé réinitialise l'erreur au changement de page. */}
+          <ErrorBoundary key={displayedPage} navigate={navigate}>
+            <div className={wrapperClass} key={displayedPage}>
+              <PageComponent navigate={navigate} />
+            </div>
+          </ErrorBoundary>
         </main>
 
         <Footer navigate={navigate} />
