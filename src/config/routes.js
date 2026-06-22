@@ -4,50 +4,50 @@
    Pour modifier une adresse ou un texte SEO : c'est ici, en un seul endroit.
 ═══════════════════════════════════════════════════════════════ */
 
-export const SITE_URL = "https://labulledemarion.netlify.app";
+export const SITE_URL = "https://labulledemarion.fr";
 
 export const ROUTES = [
   {
     id: "home",
     path: "/",
-    title: "La Bulle de Marion — Massage prénatal, postnatal & bébé à domicile",
+    title: "La Bulle de Marion — Massage prénatal, postnatal & bébé à Massy (91)",
     description:
-      "Massages prénatals, postnatals et bébé, rituel rebozo et serrage du bassin, à domicile en région parisienne. Un accompagnement périnatal tout en douceur.",
+      "Massage prénatal, postnatal et bébé, bain enveloppé, rituel Rebozo et serrage du bassin, à domicile à Massy et en Essonne (91). Un accompagnement périnatal tout en douceur.",
   },
   {
     id: "apropos",
     path: "/a-propos",
-    title: "À propos — Marion, praticienne périnatale | La Bulle de Marion",
+    title: "À propos — Marion, praticienne périnatale à Massy (91) | La Bulle de Marion",
     description:
-      "Découvrez Marion et sa démarche d'accompagnement périnatal en douceur, à domicile en région parisienne.",
+      "Découvrez Marion et sa démarche d'accompagnement périnatal en douceur, à domicile à Massy et en Essonne (91).",
   },
   {
     id: "soins",
     path: "/soins",
-    title: "Les soins — massages, rituel rebozo, serrage du bassin | La Bulle de Marion",
+    title: "Soins & massages bébé et femme enceinte à Massy (91) | La Bulle de Marion",
     description:
-      "Massages prénatals, postnatals et bébé, rituel rebozo, serrage du bassin, bains enveloppés. Détail des soins et tarifs, à domicile en région parisienne.",
+      "Massage prénatal et postnatal, massage bébé, bain enveloppé et thérapeutique bébé, rituel Rebozo, serrage du bassin. Soins et tarifs, à domicile à Massy et en Essonne (91).",
   },
   {
     id: "accompagnement",
     path: "/accompagnement",
-    title: "L'accompagnement périnatal | La Bulle de Marion",
+    title: "Accompagnement périnatal à Massy (91) | La Bulle de Marion",
     description:
-      "Un accompagnement périnatal personnalisé et bienveillant, de la grossesse aux premiers mois de bébé, à domicile en région parisienne.",
+      "Un accompagnement périnatal personnalisé et bienveillant, de la grossesse aux premiers mois de bébé, à domicile à Massy et en Essonne (91).",
   },
   {
     id: "temoignages",
     path: "/temoignages",
-    title: "Témoignages des familles | La Bulle de Marion",
+    title: "Témoignages des familles — Massy (91) | La Bulle de Marion",
     description:
-      "Les retours des familles accompagnées par La Bulle de Marion lors de leurs soins prénatals, postnatals et bébé.",
+      "Les retours des familles accompagnées à Massy et en Essonne (91) lors de leurs soins prénatals, postnatals et bébé.",
   },
   {
     id: "contact",
     path: "/contact",
-    title: "Contact — prendre contact | La Bulle de Marion",
+    title: "Contact & réservation — massages à domicile à Massy (91) | La Bulle de Marion",
     description:
-      "Contactez Marion pour un soin à domicile en région parisienne : téléphone, email et formulaire de contact.",
+      "Contactez Marion pour un soin à domicile à Massy et en Essonne (91) : téléphone, e-mail et formulaire de contact.",
   },
 ];
 
