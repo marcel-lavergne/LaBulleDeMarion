@@ -242,7 +242,7 @@ export const SOINS = [
   id: "head-spa-skin",
   icon: "head-skin",
   image: imgHeadSpaSkin,
-  name: "Head Spa Skin",
+  name: "Head Spa peau à peau",
   duration: "1h30",
   price: "130€",
   cible: "femme enceinte",
