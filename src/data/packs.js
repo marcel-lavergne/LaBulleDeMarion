@@ -8,8 +8,8 @@ export const PACKS = [
   {
     id: "pack-1",
     name: "Massage prénatal + Bain enveloppé",
-    price: "160€",
-    originalPrice: "170€",
+    price: "200€",
+    originalPrice: "210€",
   },
   {
     id: "pack-2",
@@ -20,14 +20,14 @@ export const PACKS = [
   {
     id: "pack-3",
     name: "Massage prénatal + Rituel Rebozo",
-    price: "270€",
-    originalPrice: "280€",
+    price: "330€",
+    originalPrice: "340€",
   },
   {
     id: "pack-4",
     name: "Rituel Rebozo + Bain enveloppé",
-    price: "280€",
-    originalPrice: "290€",
+    price: "300€",
+    originalPrice: "310€",
   },
   {
     id: "pack-5",
@@ -38,7 +38,7 @@ export const PACKS = [
   {
     id: "pack-6",
     name: "Thérapeutique bain bébé + Rituel Rebozo",
-    price: "290€",
-    originalPrice: "300€",
+    price: "310€",
+    originalPrice: "320€",
   },
 ];
