@@ -93,7 +93,7 @@ export default function Contact() {
           <div className={styles.infoBlock}>
             <p className={styles.infoLabel}>Téléphone</p>
             <a href="tel:0615930164" className={styles.infoValue}>
-              06 15 93 01 64
+              07 43 71 41 53
             </a>
           </div>
 
@@ -106,7 +106,7 @@ export default function Contact() {
 
           <div className={styles.infoBlock}>
             <p className={styles.infoLabel}>Zone d'intervention</p>
-            <p className={styles.infoValue}>À domicile — Essonne (91), Hauts-de-Seine (92), Val-de-Marne (94)</p>
+            <p className={styles.infoValue}>À domicile ou à La symphonie des mains - 8 rue Normandie Niemen 91300 Massy — Essonne (91), Hauts-de-Seine (92), Val-de-Marne (94)</p>
             <p style={{ fontSize: ".82rem", marginTop: ".45rem", opacity: .8, fontWeight: 300, lineHeight: 1.6 }}>
               Dans un rayon de 15 km autour de Massy. Au-delà, un supplément
               kilométrique de 0,30 €/km s'applique pour un aller et un retour.
@@ -120,7 +120,7 @@ export default function Contact() {
 
           <div className={styles.infoNote}>
             <p>
-              Je me déplace directement à votre domicile pour vous offrir
+              Je vous accueille à la symphonie des mains ou je me déplace directement à votre domicile pour vous offrir
               un moment de douceur dans votre environnement.
             </p>
           </div>
