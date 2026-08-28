@@ -112,7 +112,7 @@ export default function Contact() {
               kilométrique de 0,30 €/km s'applique pour un aller et un retour.
             </p>
             <p className={styles.infoValue} style={{ marginTop: ".5rem" }}>
-              à La symphonie des mains - 8 rue Normandie Niemen 91300 Massy 
+              À La symphonie des mains - 8 rue Normandie Niemen 91300 Massy 
             </p>
           </div>
 
