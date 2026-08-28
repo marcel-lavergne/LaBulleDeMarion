@@ -225,7 +225,7 @@ export const SOINS = [
   name: "Head Spa",
   duration: "1h30",
   price: "110€",
-  cible: "femme enceinte",
+  cible: "femme",
   color: "terra",
   description:
     "Ce soin tire ses origines d'ancienne traditions japonaises. Le head spa mets en lumière le lien entre le corps et l'esprit, offrant une expérience sensorielle qui nourrit le corps, apaise l'esprit et réveille les sens. Il combine des techniques de massage et des soins capillaires pour offrir une expérience holistique et apaisante. Ce soin comporte un temps d'échange et une heure de soins.",
@@ -245,7 +245,7 @@ export const SOINS = [
   name: "Head Spa peau à peau",
   duration: "1h30",
   price: "130€",
-  cible: "femme enceinte",
+  cible: "femme",
   color: "terra",
   description:
     "Le head spa va permettre à la maman de se reconnecter, de récupérer, et de se détendre. Il y a aussi des bienfaits pour le bébé comme la sécurité affective l'apaisement et l’éveil sensoriel doux. Ce duo favorise le renforcement du lien d’attachement et va harmoniser les énergies et les rythmes de la maman et de bébé. Ce soin se déroule avec un temps d’échange et une heure de soin.",
