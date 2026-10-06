@@ -5,7 +5,7 @@
    Google n'est chargé QU'APRÈS acceptation du visiteur.
 ───────────────────────────────────────────── */
 
-export const GA_ID = "GTM-WQCL479C";
+export const GA_ID = "G-CVG1MDW16D";
 
 const KEY = "lbm-consent"; // "yes" | "no"
 let loaded = false;
