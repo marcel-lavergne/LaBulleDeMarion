@@ -1,44 +1,37 @@
-/* ─────────────────────────────────────────────
-   useNavigation — La Bulle de Marion
-   Navigation SPA avec effet rideau + gestion de
-   l'URL et de l'historique du navigateur.
-   (Le bouton Précédent/Suivant fonctionne enfin.)
-
-   • navigate("soins")
-        -> change de page
-   • navigate("soins", "rituel-rebozo")
-        -> change de page ET défile jusqu'à
-           l'élément id="rituel-rebozo"
-───────────────────────────────────────────── */
-
 import { useState, useCallback, useRef, useEffect } from "react";
+import { SITE_URL, pathToId, idToPath, metaFor } from "../config/routes.js";
+import { trackPage } from "../config/analytics.js";
 
 const CURTAIN_DURATION = 380; // ms — doit correspondre à --curtain-duration dans globals.css
 const FADE_DELAY       = 80;  // ms entre la fin du rideau et le fadeIn du contenu
 
-/* Correspondance page <-> URL */
-const PAGE_TO_PATH = {
-  home:        "/",
-  apropos:     "/apropos",
-  soins:       "/soins",
-  packs:       "/packs",
-  temoignages: "/temoignages",
-  contact:     "/contact",
-  admin:       "/admin",
-};
-const PATH_TO_PAGE = Object.fromEntries(
-  Object.entries(PAGE_TO_PATH).map(([page, path]) => [path, page])
-);
-
-/* Quelle page d'après l'URL courante (rechargement / lien direct) */
 function pageFromLocation() {
-  return PATH_TO_PAGE[window.location.pathname] || "home";
+  return pathToId(window.location.pathname);
 }
 
-/* Construit l'URL d'une page (+ ancre éventuelle) */
 function buildUrl(page, anchor) {
-  const path = PAGE_TO_PATH[page] || "/";
+  const path = idToPath(page);
   return anchor ? `${path}#${anchor}` : path;
+}
+
+function setAttr(selector, attr, value) {
+  const el = document.head.querySelector(selector);
+  if (el) el.setAttribute(attr, value);
+}
+
+/* Titre, description et adresse canonique propres à la page affichée */
+function applyMeta(page) {
+  const meta = metaFor(page);
+  const url  = SITE_URL + (meta.noindex ? "/" : meta.path);
+  document.title = meta.title;
+  setAttr('meta[name="description"]',         "content", meta.description);
+  setAttr('link[rel="canonical"]',            "href",    url);
+  setAttr('meta[property="og:title"]',        "content", meta.title);
+  setAttr('meta[property="og:description"]',  "content", meta.description);
+  setAttr('meta[property="og:url"]',          "content", url);
+  setAttr('meta[name="twitter:title"]',       "content", meta.title);
+  setAttr('meta[name="twitter:description"]', "content", meta.description);
+  setAttr('meta[name="robots"]', "content", meta.noindex ? "noindex, follow" : "index, follow");
 }
 
 export function useNavigation(initialPage) {
@@ -121,13 +114,12 @@ export function useNavigation(initialPage) {
     [goTo]
   );
 
-  /* Branche le bouton Précédent / Suivant du navigateur */
   useEffect(() => {
     // état initial posé sur la 1re entrée d'historique
-    window.history.replaceState(
+       window.history.replaceState(
       { page: currentRef.current, anchor: null },
       "",
-      buildUrl(currentRef.current)
+      window.location.pathname + window.location.search + window.location.hash
     );
 
     const onPopState = (e) => {
@@ -140,6 +132,9 @@ export function useNavigation(initialPage) {
     return () => window.removeEventListener("popstate", onPopState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  useEffect(() => {
+    applyMeta(currentPage);
+    trackPage(metaFor(currentPage).title);
+  }, [currentPage]);
   return { currentPage, displayedPage, pagePhase, curtainClass, navigate };
 }

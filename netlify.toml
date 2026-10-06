@@ -9,9 +9,9 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Repli SPA : toutes les URL non-fichiers renvoient index.html
-# (les fonctions /.netlify/functions/* sont servies AVANT cette règle)
+# www → adresse principale (une seule version indexée)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "https://www.labulledemarion.fr/*"
+  to = "https://labulledemarion.fr/:splat"
+  status = 301
+  force = true

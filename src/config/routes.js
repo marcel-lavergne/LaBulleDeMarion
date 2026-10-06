@@ -51,7 +51,24 @@ export const ROUTES = [
   },
 ];
 
-const DEFAULT = ROUTES[0];
+/* Pages hors référencement (jamais indexées, absentes du sitemap) */
+export const ADMIN_PATH = "/admin";
+const HIDDEN = {
+  admin: {
+    id: "admin",
+    path: ADMIN_PATH,
+    title: "Administration | La Bulle de Marion",
+    description: "",
+    noindex: true,
+  },
+  notfound: {
+    id: "notfound",
+    path: "/404",
+    title: "Page introuvable | La Bulle de Marion",
+    description: "La page que vous cherchez n'existe pas ou a été déplacée.",
+    noindex: true,
+  },
+};
 
 /** Nettoie un pathname (supprime les / de fin) */
 function clean(pathname) {
@@ -61,17 +78,20 @@ function clean(pathname) {
 
 /** URL → id de page (ex: "/soins" → "soins") */
 export function pathToId(pathname) {
-  const match = ROUTES.find((r) => r.path === clean(pathname));
-  return match ? match.id : "home";
+  const p = clean(pathname);
+  if (p === ADMIN_PATH) return "admin";
+  const match = ROUTES.find((r) => r.path === p);
+  return match ? match.id : "notfound"; // adresse inconnue → vraie page 404
 }
 
 /** id de page → URL (ex: "soins" → "/soins") */
 export function idToPath(id) {
+  if (id === "admin") return ADMIN_PATH;
   const match = ROUTES.find((r) => r.id === id);
   return match ? match.path : "/";
 }
 
 /** id de page → infos SEO (titre + description) */
 export function metaFor(id) {
-  return ROUTES.find((r) => r.id === id) ?? DEFAULT;
+  return ROUTES.find((r) => r.id === id) ?? HIDDEN[id] ?? HIDDEN.notfound;
 }

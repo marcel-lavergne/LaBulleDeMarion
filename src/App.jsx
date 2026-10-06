@@ -11,7 +11,7 @@ import { useScrolled }   from "./hooks/useScrolled.js";
 import Navbar from "./components/layout/Navbar.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import ErrorBoundary from "./components/ErrorBoundary.jsx";
-
+import ConsentBanner from "./components/ConsentBanner.jsx";
 import Home           from "./pages/Home.jsx";
 import Apropos        from "./pages/Apropos.jsx";
 import Soins          from "./pages/Soins.jsx";
@@ -34,9 +34,9 @@ const PAGE_MAP = {
   admin:          Admin,
 };
 
-export default function App() {
+export default function App({ initialPage = "" }) {
   const { currentPage, displayedPage, pagePhase, curtainClass, navigate } =
-    useNavigation("");
+    useNavigation(initialPage);
 
   /* Référence sur le conteneur scrollable */
   const scrollRef = useRef(null);
@@ -95,6 +95,7 @@ export default function App() {
 
         <Footer navigate={navigate} />
       </div>
+            <ConsentBanner />
     </>
   );
 }
