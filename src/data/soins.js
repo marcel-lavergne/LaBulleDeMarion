@@ -15,7 +15,7 @@ import imgAtelier      from "../assets/soin-atelier-bebe.jpg";
 import imgVentre       from "../assets/soin-maux-ventre.jpg";
 import imgEnfant from "../assets/soin-massage-enfant.jpg";
 import imgHeadSpa from "../assets/soin-head-massage.jpg";
-import imgHeadSpaSkin from "../assets/soin-head-skin-to-skin-massage.jpg";
+import imgHeadSpaSkin from "../assets/soin-head-skin-to-skin-massage.png";
 
 export const SOINS = [
   {
