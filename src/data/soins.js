@@ -58,7 +58,7 @@ export const SOINS = [
       "Bien être et appaisement du bébé",
       "favorise le lien précoce entre la mère et son bébé",
     ],
-    contrindications: "Infectieux (états fébriles, infections, inflammations, plaies.), grossesse (Saignements vaginaux, contractions prématurées, menace d’accouchement prématurés, ruptures des membranes, col de l’utérus ouvert, douleurs abdominales), certaines pathologies (prééclampsie, hypertension artérielle, placenta prævia, retard de croissance fœtal), thrombose, phlébite, trouble circulatoire",
+    contrindications: "Premier trimestre de grossesse, infectieux (états fébriles, infections, inflammations, plaies.), grossesse (Saignements vaginaux, contractions prématurées, menace d’accouchement prématurés, ruptures des membranes, col de l’utérus ouvert, douleurs abdominales), certaines pathologies (prééclampsie, hypertension artérielle, placenta prævia, retard de croissance fœtal), thrombose, phlébite, trouble circulatoire",
   },
   {
     id: "postnatal",
@@ -220,6 +220,7 @@ export const SOINS = [
 },
  {
   id: "head-spa",
+   lieu: "Uniquement à la Symphonie des Mains (Massy)",
   icon: "head",
   image: imgHeadSpa,
   name: "Head Spa",
@@ -236,10 +237,11 @@ export const SOINS = [
     "Relâchement des tensions du cuir chevelu, de la nuque et des épaules",
     "Temps de reconnection à soi",
   ],
-  contrindications: "Grossesse à risques, menace d'accouchement prématuré, contractions ou saignements, hypertension artérielle, pré éclampsie, malaises, présence de poux, maladies contagieuses (zona, herpes, psoriasis...), phlébite, traitement anticoagulant, chirurgie récente ou plaies ouvertes, épilepsie, migraines, cervicalgies importantes ou hernies cervicales, cancer en cours de traitement, botox ou greffe capillaire.",
+  contrindications: "Premier trimestre de grossesse, grossesse à risques, menace d'accouchement prématuré, contractions ou saignements, hypertension artérielle, pré éclampsie, malaises, présence de poux, maladies contagieuses (zona, herpes, psoriasis...), phlébite, traitement anticoagulant, chirurgie récente ou plaies ouvertes, épilepsie, migraines, cervicalgies importantes ou hernies cervicales, cancer en cours de traitement, botox ou greffe capillaire.",
 },
  {
   id: "head-spa-skin",
+    lieu: "Uniquement à la Symphonie des Mains (Massy)",
   icon: "head-skin",
   image: imgHeadSpaSkin,
   name: "Head Spa peau à peau",

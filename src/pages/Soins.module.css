@@ -21,6 +21,7 @@
 .cardName { font-family: var(--font-display); font-weight: 400; font-size: 1.2rem; color: var(--color-rouge); }
 .cardPrice { font-size: .82rem; font-weight: 500; color: var(--color-terra); white-space: nowrap; }
 .cardMeta { font-size: .7rem; color: var(--color-rose); letter-spacing: .06em; font-weight: 300; margin-bottom: .6rem; }
+.cardLieu { font-size: .7rem; color: var(--color-terra); font-weight: 400; margin: -.3rem 0 .6rem; }
 .accordion { overflow: hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); }
 .desc { font-size: .78rem; line-height: 1.8; color: var(--color-muted); font-weight: 300; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--color-terra) 12%,transparent); margin-bottom: 1rem; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }

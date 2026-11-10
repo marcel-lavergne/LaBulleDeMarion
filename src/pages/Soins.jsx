@@ -68,6 +68,7 @@ export default function Soins({ navigate }) {
                       <span className={styles.cardPrice}>{soin.price}</span>
                     </div>
                     <p className={styles.cardMeta}>{soin.duration} · {soin.cible}</p>
+                    {soin.lieu && <p className={styles.cardLieu}>📍 {soin.lieu}</p>}
                     <div className={styles.accordion} style={{ maxHeight: isOpen ? "500px" : "0" }}>
                       <p className={styles.desc}>{soin.description}</p>
                       <div className={styles.tags}>
