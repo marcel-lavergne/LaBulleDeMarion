@@ -92,7 +92,7 @@ export default function Contact() {
 
           <div className={styles.infoBlock}>
             <p className={styles.infoLabel}>Téléphone</p>
-            <a href="tel:0615930164" className={styles.infoValue}>
+            <a href="tel:0743714153" className={styles.infoValue}>
               07 43 71 41 53
             </a>
           </div>
