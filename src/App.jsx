@@ -17,6 +17,7 @@ import Apropos        from "./pages/Apropos.jsx";
 import Soins          from "./pages/Soins.jsx";
 import Accompagnement from "./pages/Accompagnement.jsx";
 import Temoignages    from "./pages/Temoignages.jsx";
+import CarteCadeau    from "./pages/CarteCadeau.jsx";
 import Contact        from "./pages/Contact.jsx";
 import NotFound       from "./pages/NotFound.jsx";
 import Admin          from "./pages/Admin.jsx";
@@ -31,6 +32,7 @@ const PAGE_MAP = {
   accompagnement: Accompagnement,
   temoignages:    Temoignages,
   contact:        Contact,
+ "carte-cadeau": CarteCadeau,
   admin:          Admin,
 };
 
