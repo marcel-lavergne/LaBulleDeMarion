@@ -26,7 +26,7 @@ export const ROUTES = [
     path: "/soins",
     title: "Soins & massages bébé et femme enceinte à Massy (91) | La Bulle de Marion",
     description:
-      "Massage prénatal et postnatal, massage bébé, bain enveloppé et thérapeutique bébé, rituel Rebozo, serrage du bassin. Soins et tarifs, à domicile à Massy et en Essonne (91).",
+      "Massage prénatal et postnatal, massage bébé, bain enveloppé et thalasso bébé, rituel Rebozo, serrage du bassin. Soins et tarifs, à domicile à Massy et en Essonne (91).",
   },
   {
     id: "accompagnement",

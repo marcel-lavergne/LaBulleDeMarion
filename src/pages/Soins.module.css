@@ -26,6 +26,13 @@
 .desc { font-size: .78rem; line-height: 1.8; color: var(--color-muted); font-weight: 300; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--color-terra) 12%,transparent); margin-bottom: 1rem; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
 .tag { font-size: .65rem; padding: .18rem .65rem; border: 1px solid color-mix(in srgb,var(--color-terra) 25%,transparent); color: var(--color-muted); border-radius: 99px; }
+.deroule { margin: -.3rem 0 1rem; padding-left: 1.1rem; display: flex; flex-direction: column; gap: .5rem; }
+.deroule li { font-size: .74rem; line-height: 1.7; color: var(--color-muted); font-weight: 300; }
+.deroule strong { color: var(--color-text); font-weight: 500; }
+.formules { list-style: none; padding: 0; margin: 0 0 .8rem; }
+.formules li { display: flex; justify-content: space-between; font-size: .75rem; color: var(--color-muted); padding: .35rem 0; border-bottom: 1px solid color-mix(in srgb,var(--color-terra) 12%,transparent); }
+.formules strong { color: var(--color-terra); font-weight: 500; }
+.encart { font-size: .74rem; line-height: 1.75; color: var(--color-text); font-weight: 300; background: var(--color-lin); border-left: 2px solid var(--color-terra); padding: .8rem 1rem; margin-bottom: .8rem; }
 .ci { font-size: .68rem; color: var(--color-rose); font-style: italic; padding-top: .7rem; border-top: 1px dashed color-mix(in srgb,var(--color-rose) 45%,transparent); line-height: 1.7; font-weight: 300; }
 .toggle { font-size: .68rem; color: var(--color-terra); margin-top: .8rem; letter-spacing: .06em; }
 

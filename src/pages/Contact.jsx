@@ -92,7 +92,7 @@ export default function Contact() {
 
           <div className={styles.infoBlock}>
             <p className={styles.infoLabel}>Téléphone</p>
-            <a href="tel:0615930164" className={styles.infoValue}>
+            <a href="tel:0743714153" className={styles.infoValue}>
               07 43 71 41 53
             </a>
           </div>
@@ -109,7 +109,7 @@ export default function Contact() {
             <p className={styles.infoValue}>À domicile — Essonne (91), Hauts-de-Seine (92), Val-de-Marne (94)</p>
             <p style={{ fontSize: ".82rem", marginTop: ".45rem", opacity: .8, fontWeight: 300, lineHeight: 1.6 }}>
               Dans un rayon de 15 km autour de Massy. Au-delà, un supplément
-              kilométrique de 0,30 €/km s'applique pour un aller et un retour.
+              kilométrique de 0,60 €/km s'applique pour un aller et un retour.
             </p>
             <p className={styles.infoValue} style={{ marginTop: ".5rem" }}>
               À La symphonie des mains - 8 rue Normandie Niemen 91300 Massy 
