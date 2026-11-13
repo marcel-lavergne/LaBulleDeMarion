@@ -8,6 +8,10 @@
 .refresh { background: none; border: 1px solid color-mix(in srgb, var(--color-terra) 30%, transparent); color: var(--color-terra); border-radius: 99px; padding: .45rem 1rem; font-size: .72rem; letter-spacing: .05em; cursor: pointer; }
 .refresh:hover { background: color-mix(in srgb, var(--color-terra) 8%, transparent); }
 
+.onglets { display: flex; gap: .4rem; margin-bottom: 2rem; border-bottom: 1px solid color-mix(in srgb, var(--color-terra) 15%, transparent); }
+.onglet { background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; padding: .6rem 1rem; font-family: var(--font-body); font-size: .8rem; letter-spacing: .05em; color: var(--color-muted); cursor: pointer; }
+.ongletActif { color: var(--color-terra); border-bottom-color: var(--color-terra); }
+
 .sectionTitle { font-family: var(--font-body); font-size: .74rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--color-rose); margin: 0 0 1rem; }
 .empty { font-size: .82rem; color: var(--color-muted); font-weight: 300; font-style: italic; margin-bottom: 1rem; }
 

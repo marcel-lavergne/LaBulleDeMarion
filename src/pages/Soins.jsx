@@ -134,7 +134,7 @@ export default function Soins({ navigate }) {
           <p className="body-light" style={{ maxWidth: 480, margin: "0 auto 2rem", textAlign: "center" }}>
             Disponibles pour tous les soins et packs. Idéales pour une naissance, une baby shower ou une fête des mères.
           </p>
-          <Button variant="fill" onClick={() => navigate("contact")}>Demander une carte cadeau</Button>
+          <Button variant="fill" onClick={() => navigate("carte-cadeau")}>Offrir une carte cadeau</Button>
         </div>
       )}
     </div>

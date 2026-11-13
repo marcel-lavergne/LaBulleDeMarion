@@ -35,6 +35,11 @@ export const EMAILJS_SERVICE_ID  = "service_jf4652c";
 export const EMAILJS_TEMPLATE_ID = "template_6uf0xhe";
 export const EMAILJS_PUBLIC_KEY  = "D130WqroRLBnYd3mB";
 
+/* Modèle EmailJS des cartes cadeaux (carte, confirmation, copie pour Marion).
+   Un seul modèle générique : destinataire, sujet et contenu sont fournis
+   par le serveur. À créer dans EmailJS (voir le guide), puis coller son ID ici. */
+export const EMAILJS_TEMPLATE_CARTE = "TON_TEMPLATE_CARTE";
+
 
 /* Vrai uniquement quand les 3 clés ont été renseignées.
    Tant que c'est faux, le formulaire affiche un message d'attente

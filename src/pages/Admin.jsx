@@ -9,6 +9,7 @@
 
 import { useState, useEffect } from "react";
 import Button from "../components/ui/Button.jsx";
+import AdminCartes from "../components/admin/AdminCartes.jsx";
 import styles from "./Admin.module.css";
 
 const API = "/.netlify/functions/admin-temoignages";
@@ -21,6 +22,7 @@ export default function Admin() {
   const [error, setError]     = useState("");
   const [editId, setEditId]   = useState(null);
   const [draft, setDraft]     = useState({ author: "", detail: "", text: "" });
+  const [onglet, setOnglet]   = useState("temoignages"); // "temoignages" | "cartes"
 
   const headers = (p = pw) => ({ "content-type": "application/json", "x-admin-password": p });
 
@@ -164,7 +166,7 @@ export default function Admin() {
   return (
     <div className={styles.wrap}>
       <div className={styles.topbar}>
-        <h1 className="title-display" style={{ fontSize: "1.7rem" }}>Témoignages — administration</h1>
+        <h1 className="title-display" style={{ fontSize: "1.7rem" }}>Administration</h1>
         <div style={{ display: "flex", gap: ".8rem", alignItems: "center" }}>
           <button type="button" className={styles.refresh} onClick={() => load()} disabled={busy}>
             {busy ? "…" : "Rafraîchir"}
@@ -172,6 +174,18 @@ export default function Admin() {
           <button type="button" className={styles.refresh} onClick={logout}>Se déconnecter</button>
         </div>
       </div>
+
+      {/* ── Onglets ── */}
+      <div className={styles.onglets}>
+        <button type="button" className={`${styles.onglet} ${onglet === "temoignages" ? styles.ongletActif : ""}`} onClick={() => setOnglet("temoignages")}>
+          Témoignages
+        </button>
+        <button type="button" className={`${styles.onglet} ${onglet === "cartes" ? styles.ongletActif : ""}`} onClick={() => setOnglet("cartes")}>
+          Cartes cadeaux
+        </button>
+      </div>
+
+      {onglet === "cartes" ? <AdminCartes headers={headers} /> : <>
 
       {error && <p className={styles.error}>{error}</p>}
 
@@ -184,6 +198,7 @@ export default function Admin() {
       {valides.length === 0
         ? <p className={styles.empty}>Aucun témoignage publié.</p>
         : valides.map(renderCard)}
+      </>}
     </div>
   );
 }

@@ -18,7 +18,7 @@ const NAV_LINKS = [
   { id: "soins",          label: "Les soins" },
   { id: "accompagnement", label: "L'accompagnement" },
   { id: "temoignages",    label: "Témoignages" },
-    { id: "carte-cadeau",   label: "Carte cadeau" },
+  { id: "carte-cadeau",   label: "Carte cadeau" },
 ];
 
 export default function Navbar({ currentPage, navigate, scrolled }) {

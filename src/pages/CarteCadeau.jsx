@@ -32,9 +32,17 @@ const INITIAL_FORM = {
   cgv: false,
 };
 
+/* Liste des soins proposés à l'achat : un soin avec plusieurs formules
+   (ex. Rituel Rebozo seul / à 4 mains) donne une ligne par formule. */
+const OFFRES_SOINS = SOINS.flatMap((s) =>
+  s.formules
+    ? s.formules.map((f) => ({ ...s, id: f.id, name: `${s.name} — ${f.nom}`, price: f.price }))
+    : [s]
+);
+
 /* Retrouve un soin ou un pack à partir de son id */
 function trouverOffre(id) {
-  return SOINS.find((s) => s.id === id) ?? PACKS.find((p) => p.id === id) ?? null;
+  return OFFRES_SOINS.find((s) => s.id === id) ?? PACKS.find((p) => p.id === id) ?? null;
 }
 
 export default function CarteCadeau() {
@@ -162,7 +170,7 @@ export default function CarteCadeau() {
               <select value={form.offre} onChange={set("offre")} disabled={envoi}>
                 <option value="">— Choisir —</option>
                 <optgroup label="Soins">
-                  {SOINS.map((s) => (
+                  {OFFRES_SOINS.map((s) => (
                     <option key={s.id} value={s.id}>{s.name} — {s.price}</option>
                   ))}
                 </optgroup>
@@ -177,7 +185,18 @@ export default function CarteCadeau() {
           ) : (
             <div className="field" style={{ marginBottom: "2rem" }}>
               <label>Montant (de {MONTANT_MIN} € à {MONTANT_MAX} €) *</label>
-              
+              <div className={styles.rapides}>
+                {MONTANTS_RAPIDES.map((m) => (
+                  <button
+                    key={m}
+                    type="button"
+                    className={`${styles.rapide} ${Number(form.montant) === m ? styles.rapideActif : ""}`}
+                    onClick={() => setForm((prev) => ({ ...prev, montant: String(m) }))}
+                  >
+                    {m} €
+                  </button>
+                ))}
+              </div>
               <input
                 type="number"
                 min={MONTANT_MIN}

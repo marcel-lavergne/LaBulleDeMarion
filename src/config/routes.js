@@ -42,7 +42,7 @@ export const ROUTES = [
     description:
       "Les retours des familles accompagnées à Massy et en Essonne (91) lors de leurs soins prénatals, postnatals et bébé.",
   },
-    {
+  {
     id: "carte-cadeau",
     path: "/carte-cadeau",
     title: "Carte cadeau — offrir un soin ou un massage à Massy (91) | La Bulle de Marion",

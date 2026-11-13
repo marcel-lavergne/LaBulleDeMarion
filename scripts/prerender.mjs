@@ -15,7 +15,7 @@ import { resolve, dirname } from "node:path";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = resolve(root, "dist");
 
-const { render, ROUTES, SITE_URL, metaFor, SOINS } = await import(
+const { render, ROUTES, SITE_URL, metaFor, SOINS, PACKS } = await import(
   pathToFileURL(resolve(root, "dist-ssr/entry-server.js")).href
 );
 
@@ -117,5 +117,21 @@ for (const [file, html] of out) {
   writeFileSync(resolve(dist, file), html);
   console.log(`  pré-rendu  dist/${file}`);
 }
+
+/* Tarifs des cartes cadeaux, lus par les fonctions serveur (le prix payé
+   vient toujours d'ici, jamais du navigateur). Une ligne par soin, par
+   formule (ex. Rebozo à 4 mains) et par pack. */
+const prix = (p) => parseInt(String(p).replace(/[^\d]/g, ""), 10);
+const tarifs = {};
+for (const s of SOINS) {
+  if (s.formules) {
+    for (const f of s.formules) tarifs[f.id] = { nom: `${s.name} — ${f.nom}`, prix: prix(f.price) };
+  } else {
+    tarifs[s.id] = { nom: s.name, prix: prix(s.price) };
+  }
+}
+for (const p of PACKS) tarifs[p.id] = { nom: p.name, prix: prix(p.price) };
+writeFileSync(resolve(root, "netlify/functions/_tarifs.json"), JSON.stringify(tarifs, null, 2) + "\n");
+console.log("  tarifs     netlify/functions/_tarifs.json");
 
 rmSync(resolve(root, "dist-ssr"), { recursive: true, force: true });

@@ -11,6 +11,7 @@ import App from "./App.jsx";
 
 export { ROUTES, SITE_URL, metaFor } from "./config/routes.js";
 export { SOINS } from "./data/soins.js";
+export { PACKS } from "./data/packs.js";
 
 export function render(pageId) {
   return renderToString(

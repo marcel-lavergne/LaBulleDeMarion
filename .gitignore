@@ -19,3 +19,6 @@ dist-ssr
 .idea
 .DS_Store
 *.sw?
+
+# Carte cadeau : fond + polices encodés, régénérés par « npm run build »
+netlify/functions/_ressources/fichiers.js

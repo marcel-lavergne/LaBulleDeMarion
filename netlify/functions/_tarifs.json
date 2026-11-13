@@ -1,0 +1,82 @@
+{
+  "rebozo": {
+    "nom": "Rituel Rebozo — Seul",
+    "prix": 220
+  },
+  "rebozo-4-mains": {
+    "nom": "Rituel Rebozo — À 4 mains",
+    "prix": 340
+  },
+  "prenatal": {
+    "nom": "Massage prénatal",
+    "prix": 120
+  },
+  "bulle-douceur-prenatale": {
+    "nom": "Une bulle de douceur prénatale",
+    "prix": 100
+  },
+  "postnatal": {
+    "nom": "Massage post-natal",
+    "prix": 100
+  },
+  "bassin": {
+    "nom": "Serrage du bassin",
+    "prix": 70
+  },
+  "bain-enveloppe": {
+    "nom": "Bain enveloppé",
+    "prix": 90
+  },
+  "bain-therapeutique": {
+    "nom": "Thalasso bain bébé",
+    "prix": 100
+  },
+  "massage-bebe-accompagnement": {
+    "nom": "Accompagnement massage bébé",
+    "prix": 150
+  },
+  "atelier-decouverte": {
+    "nom": "Atelier découverte massage bébé",
+    "prix": 55
+  },
+  "maux-de-ventre": {
+    "nom": "Massage spécial maux de ventre",
+    "prix": 55
+  },
+  "massage-enfant": {
+    "nom": "Massage enfant",
+    "prix": 55
+  },
+  "head-spa": {
+    "nom": "Head Spa",
+    "prix": 110
+  },
+  "head-spa-skin": {
+    "nom": "Head Spa peau à peau",
+    "prix": 130
+  },
+  "pack-1": {
+    "nom": "Massage prénatal + Bain enveloppé",
+    "prix": 200
+  },
+  "pack-2": {
+    "nom": "Bain enveloppé + Accompagnement massage bébé (3 séances)",
+    "prix": 230
+  },
+  "pack-3": {
+    "nom": "Massage prénatal + Rituel Rebozo",
+    "prix": 330
+  },
+  "pack-4": {
+    "nom": "Rituel Rebozo + Bain enveloppé",
+    "prix": 300
+  },
+  "pack-5": {
+    "nom": "Thalasso bain bébé + Atelier découverte massage bébé",
+    "prix": 145
+  },
+  "pack-6": {
+    "nom": "Thalasso bain bébé + Rituel Rebozo",
+    "prix": 310
+  }
+}
