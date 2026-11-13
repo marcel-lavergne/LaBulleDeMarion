@@ -15,7 +15,7 @@ import feuillage from "../assets/feuillage-large.jpg";
    → les photos restent automatiquement identiques à la page Soins.
    Au clic, on défile jusqu'au soin correspondant. */
 const FEATURED_SOINS = [
-  { id: "bain-therapeutique",          label: "Thérapeutique bain bébé" },
+  { id: "bain-thalasso",          label: "Thalasso bain bébé" },
   { id: "massage-bebe-accompagnement", label: "Massage bébé" },
   { id: "rebozo",                      label: "Rituel Rebozo" },
 ];
@@ -78,8 +78,7 @@ export default function Home({ navigate }) {
         {FEATURED_SOINS.map((f) => {
           const soin = SOINS.find((s) => s.id === f.id);
           if (!soin) return null;
-          const sub = `${soin.duration} · ${soin.price}`;
-          return (
+const sub = `${soin.duration} · ${soin.formules ? "dès " : ""}${soin.price}`;          return (
             <button
               key={f.id}
               className={`${styles.featuredCard} lift`}

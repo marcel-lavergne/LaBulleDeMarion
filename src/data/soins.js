@@ -16,6 +16,7 @@ import imgVentre       from "../assets/soin-maux-ventre.jpg";
 import imgEnfant from "../assets/soin-massage-enfant.jpg";
 import imgHeadSpa from "../assets/soin-head-massage.jpg";
 import imgHeadSpaSkin from "../assets/soin-head-skin-to-skin-massage.png";
+import imgBulle from "../assets/soin-bulle-douceur.jpg";
 
 export const SOINS = [
   {
@@ -25,6 +26,11 @@ export const SOINS = [
     name: "Rituel Rebozo",
     duration: "3h00",
     price: "220€",
+    formules: [
+      { id: "rebozo",          nom: "Seul",      price: "220€" },
+      { id: "rebozo-4-mains",  nom: "À 4 mains", price: "340€" },
+    ],
+    encart: "Pour un lâcher-prise encore plus profond et un cocon enveloppant absolu, le rituel Rebozo vous est proposé en formule à 4 mains, bercées par la présence et l'énergie simultanée de deux praticiennes.",
     cible: "Femme",
     color: "terra",
     description:
@@ -59,6 +65,40 @@ export const SOINS = [
       "favorise le lien précoce entre la mère et son bébé",
     ],
     contrindications: "Premier trimestre de grossesse, infectieux (états fébriles, infections, inflammations, plaies.), grossesse (Saignements vaginaux, contractions prématurées, menace d’accouchement prématurés, ruptures des membranes, col de l’utérus ouvert, douleurs abdominales), certaines pathologies (prééclampsie, hypertension artérielle, placenta prævia, retard de croissance fœtal), thrombose, phlébite, trouble circulatoire",
+  },
+  {
+    id: "bulle-douceur-prenatale",
+    icon: "flower",
+    image: imgBulle,
+    name: "Une bulle de douceur prénatale",
+    duration: "1h15",
+    price: "100€",
+    cible: "Femme enceinte · dès le 1er trimestre",
+    color: "rose",
+    description:
+      "Parce que le corps et l'esprit d'une future maman traversent un tsunami de changements dès les premiers mois, La Bulle de Marion vous propose un soin sur-mesure, tout en douceur et en sécurité. Ici, pas de pressions ni de serrage : place à l'enveloppement, au bercement et à la reconnexion avec votre bébé.",
+    deroule: [
+      {
+        titre: "Un temps d'accueil et de méditation guidée",
+        texte: "Pour déposer les émotions, apaiser le mental, relâcher les petites tensions du quotidien et vous connecter en douceur à votre bulle intérieure.",
+      },
+      {
+        titre: "Des bercements enveloppants au Rebozo",
+        texte: "Réalisés tout en délicatesse (sans aucune compression du bassin ni du ventre), ces mouvements de balancier procurent un sentiment de sécurité profonde et imitent le bercement utérin.",
+      },
+      {
+        titre: "L'enveloppement des extrémités (tête, épaules, genoux et pieds)",
+        texte: "Un rituel de contenance réconfortant avec les tissus pour relâcher les articulations, procurer un ancrage chaleureux et offrir un apaisement total du système nerveux.",
+      },
+    ],
+    apporte: [
+      "Sécurité & douceur, dès le 1er trimestre",
+      "Apaisement du stress",
+      "Aide à mieux vivre les petits maux de début de grossesse",
+      "Reconnexion à son corps et à son bébé",
+    ],
+    encart: "Soin réalisé sans huiles essentielles et sans chaleur excessive, dans le plus strict respect de la physiologie de la grossesse.",
+    contrindications: null, // à compléter avec Marion
   },
   {
     id: "postnatal",
@@ -100,6 +140,7 @@ export const SOINS = [
   },
   {
     id: "bain-enveloppe",
+    encart: "Parce que ces premiers moments sont uniques et éphémères, La Bulle de Marion s'associe à un photographe professionnel pour vous proposer des séances photos exclusives pendant le bain enveloppé ou le thalasso bain bébé. Un merveilleux moyen de graver ces instants suspendus en images. N'hésitez pas à me contacter si vous êtes intéressés.",
     icon: "drops",
     image: imgBainEnv,
     name: "Bain enveloppé",
@@ -121,16 +162,17 @@ export const SOINS = [
   },
   {
     id: "bain-therapeutique",
+    encart: "Parce que ces premiers moments sont uniques et éphémères, La Bulle de Marion s'associe à un photographe professionnel pour vous proposer des séances photos exclusives pendant le bain enveloppé ou le thalasso bain bébé. Un merveilleux moyen de graver ces instants suspendus en images. N'hésitez pas à me contacter si vous êtes intéressés.",
     icon: "flower",
     image: imgBainThera,
-    name: "Thérapeutique bain bébé",
+    name: "Thalasso bain bébé",
     certif: "Certifié par Sonia Krief",
     duration: "1h30",
     price: "100€",
     cible: "Bébé",
     color: "rouge",
     description:
-      "Bain enveloppé effectué par Marion elle-même. Offre les mêmes bénéfices profonds dans un cadre thérapeutique et sécurisant.",
+      "Bain enveloppé effectué par Marion elle-même. Offre les mêmes bénéfices profonds dans un cadre apaisant et sécurisant.",
     apporte: [
       "Apaisement et relaxation",
       "Réduction du stress et de l'anxiété",
@@ -220,7 +262,7 @@ export const SOINS = [
 },
  {
   id: "head-spa",
-   lieu: "Uniquement à la Symphonie des Mains (Massy)",
+  lieu: "Uniquement à la Symphonie des Mains (Massy)",
   icon: "head",
   image: imgHeadSpa,
   name: "Head Spa",
@@ -241,7 +283,7 @@ export const SOINS = [
 },
  {
   id: "head-spa-skin",
-    lieu: "Uniquement à la Symphonie des Mains (Massy)",
+  lieu: "Uniquement à la Symphonie des Mains (Massy)",
   icon: "head-skin",
   image: imgHeadSpaSkin,
   name: "Head Spa peau à peau",

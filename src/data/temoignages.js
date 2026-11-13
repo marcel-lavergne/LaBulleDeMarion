@@ -10,7 +10,7 @@ export const TEMOIGNAGES = [
     id: "t-2",
     text: "Marion est une professionnelle douce, bienveillante et à l'écoute. Le bain thérapeutique de notre nouveau-né s'est très bien déroulé et nous avons beaucoup apprécié ce moment. Elle a également pris le temps d'échanger avec nous avant le bain, ce qui nous a permis d'être rassurés et en confiance. Son contact avec les parents est très agréable et professionnel. Je la recommande sans hésitation.",
     author: "Papa d'Andréa",
-    detail: "Bain thérapeutique · 3 semaines",
+    detail: "Bain thalasso · 3 semaines",
   },
   {
     id: "t-3",

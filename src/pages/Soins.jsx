@@ -65,15 +65,30 @@ export default function Soins({ navigate }) {
                   <div className={styles.cardBody}>
                     <div className={styles.cardHeader}>
                       <h3 className={styles.cardName}>{soin.name}</h3>
-                      <span className={styles.cardPrice}>{soin.price}</span>
+                      <span className={styles.cardPrice}>{soin.formules ? `dès ${soin.price}` : soin.price}</span>
                     </div>
                     <p className={styles.cardMeta}>{soin.duration} · {soin.cible}</p>
                     {soin.lieu && <p className={styles.cardLieu}>📍 {soin.lieu}</p>}
-                    <div className={styles.accordion} style={{ maxHeight: isOpen ? "500px" : "0" }}>
+                    <div className={styles.accordion} style={{ maxHeight: isOpen ? "1800px" : "0" }}>
                       <p className={styles.desc}>{soin.description}</p>
+                      {soin.deroule && (
+                        <ol className={styles.deroule}>
+                          {soin.deroule.map(d => (
+                            <li key={d.titre}><strong>{d.titre}</strong> : {d.texte}</li>
+                          ))}
+                        </ol>
+                      )}
                       <div className={styles.tags}>
                         {soin.apporte.map(a => <span key={a} className={styles.tag}>{a}</span>)}
                       </div>
+                      {soin.formules && (
+                        <ul className={styles.formules}>
+                          {soin.formules.map(f => (
+                            <li key={f.id}><span>{f.nom}</span><strong>{f.price}</strong></li>
+                          ))}
+                        </ul>
+                      )}
+                      {soin.encart && <p className={styles.encart}>{soin.encart}</p>}
                       {soin.contrindications && (
                         <p className={styles.ci}>⚠ Contre-indications : {soin.contrindications}</p>
                       )}

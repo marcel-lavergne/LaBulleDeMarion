@@ -31,13 +31,13 @@ export const PACKS = [
   },
   {
     id: "pack-5",
-    name: "Thérapeutique bain bébé + Atelier découverte massage bébé",
+    name: "Thalasso bain bébé + Atelier découverte massage bébé",
     price: "145€",
     originalPrice: "155€",
   },
   {
     id: "pack-6",
-    name: "Thérapeutique bain bébé + Rituel Rebozo",
+    name: "Thalasso bain bébé + Rituel Rebozo",
     price: "310€",
     originalPrice: "320€",
   },
