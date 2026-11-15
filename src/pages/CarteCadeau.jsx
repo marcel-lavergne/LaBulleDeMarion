@@ -123,7 +123,7 @@ export default function CarteCadeau() {
           Offrir
         </p>
         <h1 className="reveal reveal--2 title-display" style={{ fontSize: "clamp(2.2rem,4vw,3.8rem)" }}>
-          Carte cadeau
+          Cartes cadeaux
         </h1>
         <p className="reveal reveal--3 body-light" style={{ marginTop: "1rem", maxWidth: 520 }}>
           Offrez une parenthèse de douceur : un soin, un pack ou le montant de votre choix.
