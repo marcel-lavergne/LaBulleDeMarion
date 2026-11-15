@@ -9,7 +9,7 @@ export const MONTANT_MAX = 500;
 
 
 /* Durée de validité d'une carte, en mois */
-export const VALIDITE_MOIS = 12;
+export const VALIDITE_MOIS = 6;
 
 /* Longueur maximale du petit mot écrit sur la carte */
 export const MESSAGE_MAX = 200;
