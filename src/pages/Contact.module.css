@@ -93,3 +93,11 @@ a.infoValue:hover {
   padding: 0.9rem 1rem;
   margin-bottom: 1.2rem;
 }
+/* ── Piège à robots (champ caché) ── */
+.piege {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

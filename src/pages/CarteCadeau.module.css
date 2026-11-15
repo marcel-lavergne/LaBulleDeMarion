@@ -52,29 +52,7 @@
   color: var(--color-text);
 }
 
-/* Boutons de montant rapide */
-.rapides {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
 
-.rapide {
-  flex: 1;
-  padding: 0.7rem 0;
-  background: var(--color-lin);
-  border: 1px solid color-mix(in srgb, var(--color-terra) 20%, transparent);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-  cursor: pointer;
-}
-
-.rapideActif {
-  background: var(--color-terra);
-  border-color: var(--color-terra);
-  color: var(--color-lin);
-}
 
 .aide {
   font-size: var(--text-xs);

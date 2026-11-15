@@ -4,7 +4,7 @@
    Envoi des mails via EmailJS (voir src/config/email.js)
 ───────────────────────────────────────────── */
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import Button from "../components/ui/Button.jsx";
 import {
@@ -24,16 +24,33 @@ const STATUS = {
   SENDING: "sending",
   SENT:    "sent",
   ERROR:   "error",
+  ERROR_LIEN: "error_lien",
 };
 
 export default function Contact() {
   const [form, setForm]     = useState(INITIAL_FORM);
   const [status, setStatus] = useState(STATUS.IDLE);
+  const [piege, setPiege]   = useState("");        // champ caché anti-robot
+  const ouvertLe            = useRef(Date.now());  // heure d'arrivée sur la page
 
   const set = (key) => (e) => setForm(prev => ({ ...prev, [key]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    /* ── Anti-spam ──
+       Un robot remplit le champ caché, ou envoie en moins de 3 secondes :
+       on fait comme si c'était parti, mais rien n'est envoyé à Marion. */
+    if (piege !== "" || Date.now() - ouvertLe.current < 3000) {
+      setStatus(STATUS.SENT);
+      setForm(INITIAL_FORM);
+      return;
+    }
+    /* Les liens sont la marque des messages publicitaires */
+    if (/https?:\/\/|www\./i.test(form.message)) {
+      setStatus(STATUS.ERROR_LIEN);
+      return;
+    }
 
     // Si les clés EmailJS ne sont pas encore renseignées, on prévient.
     if (!EMAILJS_CONFIGURED) {
@@ -149,6 +166,14 @@ export default function Contact() {
           ) : (
             <form onSubmit={handleSubmit}>
 
+              {/* Piège à robots : invisible pour les visiteurs, rempli par les robots */}
+              <div className={styles.piege} aria-hidden="true">
+                <label>
+                  Ne pas remplir ce champ
+                  <input tabIndex={-1} autoComplete="off" value={piege} onChange={(e) => setPiege(e.target.value)} />
+                </label>
+              </div>
+
               <div className="field" style={{ marginBottom: "1rem" }}>
                 <label>Prénom *</label>
                 <input
@@ -183,6 +208,12 @@ export default function Contact() {
                   style={{ minHeight: "140px" }}
                 />
               </div>
+
+              {status === STATUS.ERROR_LIEN && (
+                <p className={styles.error}>
+                  Merci de ne pas mettre de lien dans le message : décrivez simplement votre demande.
+                </p>
+              )}
 
               {status === STATUS.ERROR && (
                 <p className={styles.error}>

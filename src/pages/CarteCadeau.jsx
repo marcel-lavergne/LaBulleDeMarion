@@ -12,7 +12,6 @@ import { PACKS } from "../data/packs.js";
 import {
   MONTANT_MIN,
   MONTANT_MAX,
-  MONTANTS_RAPIDES,
   VALIDITE_MOIS,
   MESSAGE_MAX,
   prixEnNombre,
@@ -185,25 +184,13 @@ export default function CarteCadeau() {
           ) : (
             <div className="field" style={{ marginBottom: "2rem" }}>
               <label>Montant (de {MONTANT_MIN} € à {MONTANT_MAX} €) *</label>
-              <div className={styles.rapides}>
-                {MONTANTS_RAPIDES.map((m) => (
-                  <button
-                    key={m}
-                    type="button"
-                    className={`${styles.rapide} ${Number(form.montant) === m ? styles.rapideActif : ""}`}
-                    onClick={() => setForm((prev) => ({ ...prev, montant: String(m) }))}
-                  >
-                    {m} €
-                  </button>
-                ))}
-              </div>
               <input
                 type="number"
                 min={MONTANT_MIN}
                 max={MONTANT_MAX}
                 step="1"
                 inputMode="numeric"
-                placeholder="Autre montant"
+                placeholder="Ex : 80"
                 value={form.montant}
                 onChange={set("montant")}
                 disabled={envoi}

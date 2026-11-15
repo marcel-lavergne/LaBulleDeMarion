@@ -7,8 +7,6 @@
 export const MONTANT_MIN = 30;
 export const MONTANT_MAX = 500;
 
-/* Boutons de montant rapide proposés sur la page */
-export const MONTANTS_RAPIDES = [50, 100, 150];
 
 /* Durée de validité d'une carte, en mois */
 export const VALIDITE_MOIS = 12;
