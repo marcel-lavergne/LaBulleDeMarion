@@ -69,7 +69,7 @@ export default async (req) => {
             unit_amount: prix * 100, // Stripe compte en centimes
             product_data: {
               name: `Carte cadeau — ${libelle}`,
-              description: `Offerte à ${beneficiaireNom}, valable 12 mois`,
+              description: `Offerte à ${beneficiaireNom}, valable 6 mois`,
             },
           },
         },

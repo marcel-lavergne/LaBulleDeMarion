@@ -47,7 +47,7 @@ export const ROUTES = [
     path: "/carte-cadeau",
     title: "Carte cadeau — offrir un soin ou un massage à Massy (91) | La Bulle de Marion",
     description:
-      "Offrez une carte cadeau La Bulle de Marion : un soin, un pack ou le montant de votre choix, envoyée par e-mail juste après le paiement. Valable 12 mois.",
+      "Offrez une carte cadeau La Bulle de Marion : un soin, un pack ou le montant de votre choix, envoyée par e-mail juste après le paiement. Valable 6 mois.",
   },
   {
     id: "contact",
